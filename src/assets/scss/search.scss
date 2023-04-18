@@ -1,0 +1,55 @@
+.search-criteria-panel {
+  margin: 0;
+  padding: 10px;
+  box-shadow: 0 2px 4px 0 lightblue;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.search-input {
+  width: 385px;
+}
+
+.clear-button {
+  color: var(--marine-blue);
+  font-size: 13px;
+  vertical-align: bottom;
+}
+
+.filter-apply-button {
+  width: 100px;
+}
+
+.table thead th {
+  padding: 0.5rem;
+  font-size: 13px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--brown-grey);
+  vertical-align: middle;
+  border: none;
+  min-width: 1300px;
+}
+
+
+tbody {
+  @media (min-width: 992px) {
+    max-height: calc(50vh - 245px);
+  }
+}
+
+table tbody tr {
+  max-height: 65vh;
+}
+
+.searchText {
+  outline: none;
+  border: none;
+  flex-grow: 1;
+}
+
+

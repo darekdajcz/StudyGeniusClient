@@ -1,0 +1,110 @@
+{
+  "internationalization": "PL/ENG",
+  "author": "Dariusz Dajcz",
+  "yes": "Tak",
+  "no": "Nie",
+  "filter": "Filtruj",
+  "reset": "Resetuj",
+  "filter_title": "Filtry",
+  "filters": "Filtruj",
+  "success": "Czynność zakończona sukcesem.",
+  "loading": "Ładowanie...",
+  "no_results": "Brak wyników",
+  "chart_toggle": "Pokaż / Ukryj wykres dostępności marek samochodów",
+  "header": {
+    "add": "Dodaj",
+    "edit": "Edytuj"
+  },
+  "cancel": {
+    "client": "Czy na pewno chcesz usunąć tego klienta?",
+    "car": "Czy na pewno chcesz usunąć to auto?"
+  },
+  "angular-lib": {
+    "title": "Aplikacja Angular"
+  },
+  "button": {
+    "login": "Zaloguj",
+    "sign-up": "Rejestracja",
+    "register": "Rejestracja",
+    "logout": "Wyloguj",
+    "details": "Szczegóły",
+    "delete": "Usuń",
+    "update": "Edytuj",
+    "cancel": "Anuluj",
+    "save": "Zapisz"
+  },
+  "section": {
+    "home": "Strona Główna",
+    "car-database": "Baza Aut",
+    "client-database": "Klienci",
+    "order-database": "Zamówienia",
+    "info": "Info",
+    "ngrx": "NgRx",
+    "login": "Logowanie",
+    "help": "Pomoc"
+  },
+  "home": {
+    "hello": "WITAJ",
+    "main-app": "NA STRONIE GŁÓWNEJ",
+    "role": "ROLA",
+    "login": "Zaloguj się"
+  },
+  "login": {
+    "logg-header": "Zaloguj sie do aplikacji",
+    "loggedIn": "ZALOGOWANY",
+    "register-redirect": "Jeśli nie masz jeszcze konta, zarejestruj się"
+  },
+  "register": {
+    "register-header": "Zarejestruj konto",
+    "sign-in": "ZAŁÓŻ KONTO",
+    "username": "Nazwa",
+    "email": "Email",
+    "password": "Hasło"
+  },
+  "form": {
+    "required": "Pole wymagane"
+  },
+  "client": {
+    "header": "Baza Klienta",
+    "add-client": "Dodaj Klienta",
+    "to-client": "Klienta",
+    "name": "Imie i Nazwisko",
+    "firstname": "Imie",
+    "surname": "Nazwisko",
+    "age": "Wiek",
+    "driver_license_number": "Prawo jazdy",
+    "address": "Adres",
+    "city": "Miasto",
+    "street": "Ulica",
+    "house_number": "Numer mieszkania",
+    "post_code": "Kod pocztowy",
+    "pesel": "Pesel",
+    "details": "Szczegóły"
+  },
+  "car": {
+    "header": "Baza Aut",
+    "add-car": "Dodaj Auto",
+    "to-car": "Auto",
+    "mark": "Marka",
+    "model": "Model",
+    "engine_capacity": "Rodzaj silnika",
+    "color": "Kolor",
+    "gearbox_type": "Skrzynia biegów",
+    "MANUAL": "Manualna",
+    "AUTOMATIC": "Automatyczna",
+    "car_type": "Rozmiar auta",
+    "SMALL": "Coupe",
+    "MID": "Van",
+    "BUS": "Bus",
+    "name": "Nazwa Auta",
+    "price_per_day": "Cena za dobę",
+    "tenant_id": "Najemca",
+    "address": "Adres",
+    "details": "Szczegóły"
+  },
+  "order": {
+    "header": "Baza Zamówień",
+    "add-order": "Dodaj Zamówienie",
+    "to-order": "Zamówienie"
+  }
+}

@@ -1,0 +1,51 @@
+.w-10 {
+  width: 8%;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+.page-link {
+  cursor: pointer;
+  color: var(--dark-primary);
+}
+
+.current-page {
+  background-color: var(--dark-primary);
+  color: white;
+}
+
+table {
+  @media (max-width: 992px) {
+    font-size: 15px;
+  }
+}
+
+th {
+  box-shadow: 1px 1px 8px -2px #455a64;
+}
+
+.big-buttons-display {
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+
+.small-buttons-display {
+  display: none;
+  @media (max-width: 992px) {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    .mat-mdc-outlined-button.mat-mdc-button-base {
+      height: 20px;
+    }
+  }
+}
+
+
+
+
+

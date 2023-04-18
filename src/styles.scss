@@ -1,0 +1,115 @@
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  --light-gray: #e3e0ef;
+  --light-black: #5c5a5b;
+  --gray: #b4b4b4;
+  --light-green: #a59f83;
+  --light-blue: #a19bf2;
+  --primary: #607d8b;
+  --dark-primary: #455a64;
+  --status-success-color: #36B036FF;
+  --status-warning-color: #faa236;
+  --cranberry: #bb2525;
+}
+
+.color-primary {
+  color: var(--dark-primary);
+}
+
+.color-gray {
+  color: var(--gray);
+}
+
+.mat-form-field {
+  font-size: 12px;
+}
+
+.mat-mdc-form-field, .mat-mdc-floating-label {
+  width: 100%;
+}
+
+.mat-form-field-label {
+  color: #37507ED1 !important;
+}
+
+.mat-form-field-ripple {
+  background-color: #37507ED1 !important;
+}
+
+::-webkit-scrollbar {
+  width: .4em;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(206, 10%, 86%);
+  border-radius: 100vw;
+  margin-block: .25em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #37507ED1;
+  border-radius: 100vw;
+  border: .15em solid #006600FF;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #144D44FF;
+}
+
+body {
+  font-family: "Times New Roman", serif;
+  margin: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;;
+  background-attachment: fixed;
+}
+
+.page {
+  @media only screen and (max-width: 992px) {
+    padding: .5rem;
+  }
+  @media only screen and (min-width: 992px) {
+    padding: 1.5rem;
+  }
+}
+
+.login-background {
+  background-image: url('/assets/image/login-background.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-repeat: no-repeat;;
+  background-attachment: fixed;
+  border-radius: 15px;
+  min-height: calc(100vh - 100px);
+  font-size: 1.25rem;
+  color: #37507ED1;
+}
+
+.background {
+  @extend .login-background;
+}
+
+.btn-close {
+  padding: 1rem;
+  margin: 1rem 1rem 1rem auto;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,86 @@
+<div class="modal-header">
+  <h4>{{(carModel ? 'header.edit' : 'header.add') | translate}} {{'car.to-car'| translate}}</h4>
+  <button class="btn-close" type="button" (click)="onDismiss()"></button>
+</div>
+<div class="modal-body pb-0">
+  <form class="pt-2 ps-5 pe-5">
+    <div class="login-container">
+      <form class="d-flex flex-column align-items-center mb-4" [formGroup]="carForm">
+
+        <mat-form-field>
+          <mat-label>{{'car.mark' | translate}}</mat-label>
+          <input autofocus type="text" matInput formControlName="mark">
+          <mat-error *ngIf="markControl.hasError('required')">
+            {{'form.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{'car.model' | translate}}</mat-label>
+          <input autofocus type="text" matInput formControlName="model">
+          <mat-error *ngIf="modelControl.hasError('required')">
+            {{'form.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{'car.engine_capacity' | translate}}</mat-label>
+          <input autofocus type="text" matInput formControlName="engine_capacity">
+          <mat-error *ngIf="engine_capacityControl.hasError('required')">
+            {{'form.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{'car.color' | translate}}</mat-label>
+          <input autofocus type="text" matInput formControlName="color">
+          <mat-error *ngIf="colorControl.hasError('required')">
+            {{'form.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-label>{{'car.gearbox_type' | translate}}</mat-label>
+        <mat-button-toggle-group class="w-100 mt-1 mb-3" name="fontStyle" aria-label="Font Style"
+                                 formControlName="gearbox_type">
+          <mat-button-toggle class="w-50" [value]="ChestType.MANUAL">
+            {{'car.MANUAL' | translate}}
+          </mat-button-toggle>
+          <mat-button-toggle class="w-50" [value]="ChestType.AUTOMATIC">
+            {{'car.AUTOMATIC' | translate}}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <mat-label>{{'car.car_type' | translate}}</mat-label>
+        <mat-button-toggle-group class="w-100 mt-1 mb-3" name="fontStyle" aria-label="Font Style"
+                                 formControlName="car_type">
+          <mat-button-toggle class="w-50" [value]="CarType.SMALL">
+            {{'car.SMALL' | translate}}
+          </mat-button-toggle>
+
+          <mat-button-toggle class="w-50" [value]="CarType.MID">
+            {{'car.MID' | translate}}
+          </mat-button-toggle>
+
+          <mat-button-toggle class="w-50" [value]="CarType.BUS">
+            {{'car.BUS' | translate}}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <mat-form-field>
+          <mat-label>{{'car.price_per_day' | translate}}</mat-label>
+          <input autofocus type="text" matInput formControlName="price_per_day">
+          <mat-error *ngIf="price_per_dayControl.hasError('required')">
+            {{'form.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+    </div>
+  </form>
+</div>
+<div *ngIf="!details" class="modal-footer justify-content-between">
+  <button mat-stroked-button color="warn" (click)="onDismiss()">{{'button.cancel' | translate}}</button>
+  <button mat-raised-button color="primary" (click)="saveCar()"
+          [disabled]="carForm.invalid">{{'button.save' | translate}}</button>
+</div>
