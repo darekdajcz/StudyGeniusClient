@@ -17,7 +17,11 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = this.tokenStorageService.getToken();
 
     if (token != null) {
-      const headers = new HttpHeaders({ 'Authorization':  token, });
+      const headers = new HttpHeaders({
+        'Authorization':  token,
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      });
 
       authReq = request.clone({ headers });
     }

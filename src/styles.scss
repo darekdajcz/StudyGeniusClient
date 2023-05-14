@@ -85,12 +85,11 @@ body {
 }
 
 .login-background {
-  background-image: url('/assets/image/login-background.png');
+  //background-image: url('/assets/image/login-background.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-repeat: no-repeat;;
-  background-attachment: fixed;
+  background: rgba(144, 164, 174, 0.32) no-repeat fixed;
   border-radius: 15px;
   min-height: calc(100vh - 100px);
   font-size: 1.25rem;

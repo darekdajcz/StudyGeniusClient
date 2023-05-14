@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../shared/services/auth.service';
-import { TokenStorageService } from '../../shared/services/token-storage.service';
-import { filter } from 'rxjs';
-import { LoginModel } from './models/login.model';
-import { Router } from '@angular/router';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {FormControl, NonNullableFormBuilder, Validators} from '@angular/forms';
+import {AuthService} from '../../shared/services/auth.service';
+import {TokenStorageService} from '../../shared/services/token-storage.service';
+import {filter} from 'rxjs';
+import {Router} from '@angular/router';
+import {AuthRequest} from "./models/auth-request.model";
 
 @Component({
   templateUrl: './login.component.html',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
 
   loginForm = this.fb.group({
-    login: [''],
+    email: [''],
     password: ['']
   });
 
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
               private readonly tokenStorageService: TokenStorageService, private readonly router: Router) {
   }
 
-  get loginControl(): FormControl<string> {
-    return this.loginForm.controls.login;
+  get emailControl(): FormControl<string> {
+    return this.loginForm.controls.email;
   }
 
   get passwordControl(): FormControl<string> {
@@ -39,15 +39,16 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const loginValues = { ...this.loginForm.value } as LoginModel;
-    this.authService.logIn(loginValues)
+    alert('x')
+    const authRequest = {...this.loginForm.value} as AuthRequest;
+    this.authService.logIn(authRequest)
       .pipe(filter((res) => !!res))
       .subscribe({
         next: (res) => {
-          if (res.success) {
-            this.tokenStorageService.saveToken(res.token!);
-            this.tokenStorageService.saveUser(res.user_data!);
-            this.router.navigate(['/']).then(()=> LoginComponent.reloadPage());
+          if (res.access_token) {
+            this.tokenStorageService.saveToken(res.access_token!);
+            this.tokenStorageService.saveUser(res.user!);
+            this.router.navigate(['/']).then(() => LoginComponent.reloadPage());
           }
         }
       });
@@ -55,5 +56,9 @@ export class LoginComponent implements OnInit {
 
   private static reloadPage(): void {
     window.location.reload();
+  }
+
+  click() {
+    this.authService.tutorList().subscribe()
   }
 }

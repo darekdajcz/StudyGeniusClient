@@ -1,0 +1,51 @@
+<div @leftRightAnimation class="search-criteria-panel" [formGroup]="tutorSearchForm">
+  <div class="d-flex justify-content-between me-2">
+    <h3 class="mb-3">{{'filters' | translate}}</h3>
+    <button mat-button class="filter-close-button" (click)="closeV()">
+      <mat-icon class="close-icon">cancel</mat-icon>
+    </button>
+  </div>
+  <div class="d-flex">
+
+    <div class="d-flex me-2">
+      <mat-form-field>
+        <mat-label>{{'tutor.firstname' | translate}}</mat-label>
+        <input matInput type="text" name="firstname" formControlName="firstname">
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex me-2">
+      <mat-form-field>
+        <mat-label>{{'tutor.lastname' | translate}}</mat-label>
+        <input matInput type="text" name="lastname" formControlName="lastname">
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex me-2">
+      <mat-form-field>
+        <mat-label>{{'tutor.subject' | translate}}</mat-label>
+        <input matInput type="text" name="subject" formControlName="subject">
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex me-2">
+      <mat-form-field>
+        <mat-label>{{'tutor.description' | translate}}</mat-label>
+        <input matInput type="text" name="description" formControlName="description">
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex me-2">
+      <mat-form-field>
+        <mat-label>{{'tutor.price' | translate}}</mat-label>
+        <input matInput type="text" name="price" formControlName="price">
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="d-flex justify-content-end">
+    <button class="me-2" mat-raised-button (click)="resetV()">{{'reset' | translate}}</button>
+    <button mat-raised-button color="primary" (click)="filter()">{{'filter' | translate}}</button>
+  </div>
+</div>

@@ -1,33 +1,53 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { SERVER_API_URL } from '../../app.constants';
-import { Observable, of, switchMap } from 'rxjs';
-import { LoginModel } from '../../entities/login/models/login.model';
-import { LoginResponse } from '../../entities/login/models/login.response';
-import { sha256 } from 'js-sha256';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {SERVER_API_URL} from '../../app.constants';
+import {Observable, of, switchMap} from 'rxjs';
+import {LoginResponse} from '../../entities/login/models/login.response';
+import {sha256} from 'js-sha256';
+import {AuthRequest} from "../../entities/login/models/auth-request.model";
+
+export interface UserModel {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  role: string;
+}
+
+export interface AuthResponse {
+  access_token: string;
+  refresh_token: string;
+  user: UserModel;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private resourceUrl = `${ SERVER_API_URL }/user`;
+  private resourceUrl = `${SERVER_API_URL}/api/auth`;
 
   constructor(private readonly http: HttpClient) {
   }
 
-  logIn(loginModel: LoginModel, nonce?: string): Observable<LoginResponse> {
-    let req;
-    if (!nonce) {
-      req = { login: loginModel.login };
-    } else {
-      const passwordX = sha256(`${ sha256(loginModel.password) }${ nonce }`);
-      req = { login: loginModel.login, password: passwordX.toLowerCase() };
-    }
-    return this.http.post<LoginResponse>(`${ this.resourceUrl }/login`, req)
-      .pipe(switchMap((res) => !nonce ? this.logIn(loginModel, res.nonce) : of(res)));
+  logout(): Observable<any> {
+    return this.http.post<any>(`${this.resourceUrl}/logout`, {});
   }
 
-  logout(): Observable<any> {
-    return this.http.post<any>(`${ this.resourceUrl }/logout`, {});
+  tutorList(): Observable<any> {
+    const req = {
+      userId: "2",
+      subject: "IT",
+      description: "informatyka, programowanie",
+      price: 150
+    }
+    return this.http.get<any>(`${SERVER_API_URL}/api/tutor`);
+  }
+
+  logIn = (authRequest: AuthRequest): Observable<AuthResponse> => {
+    const req = {
+      email: "darek.dajcz@gmail.com",
+      password: "Uzi2115"
+    };
+    return this.http.post<any>(`${this.resourceUrl}/authenticate`, authRequest);
   }
 }

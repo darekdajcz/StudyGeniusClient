@@ -12,7 +12,7 @@ import { AuthGuard } from '../shared/guard/auth.guard';
         loadChildren: () => import('./login/login.module').then(module => module.LoginModule)
       }, {
         path: 'car',
-        loadChildren: () => import('./car/car.module').then(module => module.CarModule),
+        loadChildren: () => import('./car/tutor.module').then(module => module.TutorModule),
         canLoad: [AuthGuard]
       }
     ]),

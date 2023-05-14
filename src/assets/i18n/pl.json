@@ -17,7 +17,7 @@
   },
   "cancel": {
     "client": "Czy na pewno chcesz usunąć tego klienta?",
-    "car": "Czy na pewno chcesz usunąć to auto?"
+    "tutor": "Czy na pewno chcesz usunąć to ogłoszenie korepetytora?"
   },
   "angular-lib": {
     "title": "Aplikacja Angular"
@@ -35,7 +35,7 @@
   },
   "section": {
     "home": "Strona Główna",
-    "car-database": "Baza Aut",
+    "tutor-database": "Ogloszenia korepetycji",
     "client-database": "Klienci",
     "order-database": "Zamówienia",
     "info": "Info",
@@ -81,10 +81,11 @@
     "pesel": "Pesel",
     "details": "Szczegóły"
   },
-  "car": {
-    "header": "Baza Aut",
-    "add-car": "Dodaj Auto",
-    "to-car": "Auto",
+  "tutor": {
+    "header": "Baza Naszych Nauczycieli",
+    "add-tutor": "Dodaj Ogloszenie",
+    "to-tutor": "Nauczyciel",
+    "id": "Numer",
     "mark": "Marka",
     "model": "Model",
     "engine_capacity": "Rodzaj silnika",
@@ -92,7 +93,7 @@
     "gearbox_type": "Skrzynia biegów",
     "MANUAL": "Manualna",
     "AUTOMATIC": "Automatyczna",
-    "car_type": "Rozmiar auta",
+    "tutor_type": "Rozmiar auta",
     "SMALL": "Coupe",
     "MID": "Van",
     "BUS": "Bus",

@@ -1,6 +1,6 @@
-import { HttpParams } from '@angular/common/http';
-import { CarCriteria } from '../../entities/car/car.service';
-import { values } from 'lodash';
+import {HttpParams} from '@angular/common/http';
+import {values} from 'lodash';
+import {TutorCriteria} from "../../entities/car/tutor.service";
 
 export interface Page<T> {
   content: T;
@@ -23,24 +23,24 @@ export interface Pagination {
   dir: string;
 }
 
-export const createRequestOption = (carsCriteria: CarCriteria, pageable?: Pagination): HttpParams => {
+export const createRequestOption = (pageable?: Pagination): HttpParams => {
   let options = new HttpParams();
   const carsCriteriaArr: string[] = [];
-  if(pageable) {
+  if (pageable) {
     const pageableValues = values(pageable);
     Object.keys(pageable).forEach((key, index) => {
       options = options.set(key, pageableValues[index]);
     });
   }
 
-  const carsCriteriaValues = values(carsCriteria);
-  Object.keys(carsCriteria).forEach((key, index) => {
-    if (!!carsCriteriaValues[index]) {
-      carsCriteriaArr.push(`{"property":"${ key }","value":"${ carsCriteriaValues[index] }"}`);
-    }
-  });
-
-  options = options.set('filter', `[${carsCriteriaArr.toString()}]`);
+  // const carsCriteriaValues = values(carsCriteria);
+  // Object.keys(carsCriteria).forEach((key, index) => {
+  //   if (!!carsCriteriaValues[index]) {
+  //     carsCriteriaArr.push(`{"property":"${ key }","value":"${ carsCriteriaValues[index] }"}`);
+  //   }
+  // });
+  //
+  // options = options.set('filter', `[${carsCriteriaArr.toString()}]`);
 
   return options;
 };

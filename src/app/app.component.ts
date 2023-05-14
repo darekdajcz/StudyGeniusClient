@@ -1,10 +1,10 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
-import { TokenStorageService } from './shared/services/token-storage.service';
-import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from './shared/services/auth.service';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {MatSidenav} from '@angular/material/sidenav';
+import {Router} from '@angular/router';
+import {TokenStorageService} from './shared/services/token-storage.service';
+import {TranslateService} from '@ngx-translate/core';
+import {AuthService} from './shared/services/auth.service';
+import {BreakpointObserver} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
   isLoggedIn = false;
   private opened = false;
@@ -23,11 +23,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    const lng = this.tokenStorageService.getLang();
-
-    !!lng ? this.translateService.use(lng) : null;
+    this.isLoggedIn = !!this.tokenStorageService.getUser().email;
   }
 
   ngAfterViewInit() {
@@ -47,8 +43,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   logout(): void {
-    this.authService.logout()
-      .subscribe();
+    this.authService.logout().subscribe();
     this.tokenStorageService.signOut();
     window.location.reload();
   }
