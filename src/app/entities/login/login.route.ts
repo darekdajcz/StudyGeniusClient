@@ -1,4 +1,4 @@
-import { HomeComponent } from '../home/home.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login.component';
 import { AuthGuard } from '../../shared/guard/auth.guard';
 

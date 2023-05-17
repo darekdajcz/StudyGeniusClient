@@ -1,6 +1,5 @@
 import {HttpParams} from '@angular/common/http';
 import {values} from 'lodash';
-import {TutorCriteria} from "../../entities/car/tutor.service";
 
 export interface Page<T> {
   content: T;

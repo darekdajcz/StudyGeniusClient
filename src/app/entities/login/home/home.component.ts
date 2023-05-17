@@ -1,13 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit, ViewChild} from '@angular/core';
-import {TokenStorageService} from '../../shared/services/token-storage.service';
-import {User} from '../login/models/user';
+import {TokenStorageService} from '../../../shared/services/token-storage.service';
 import {ChartType} from 'chart.js';
 import {BaseChartDirective} from 'ng2-charts';
-import {TutorService} from '../car/tutor.service';
-import {finalize} from 'rxjs';
+import {TutorService} from '../../tutor/tutor.service';
 import {TranslateService} from '@ngx-translate/core';
-import {AuthService, UserModel} from "../../shared/services/auth.service";
-
+import {AuthService, UserModel} from "../../../shared/services/auth.service";
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -66,7 +63,7 @@ export class HomeComponent implements OnInit {
     //     const dataX = [...this.carsMap.values()];
     //     this.barChartData.push({
     //       data: dataX,
-    //       label: this.translateService.instant('car.mark'),
+    //       label: this.translateService.instant('tutor.mark'),
     //       backgroundColor: '#455a64'
     //     });
     //     this.barChart?.update();
@@ -74,11 +71,11 @@ export class HomeComponent implements OnInit {
     //   .subscribe(
     //     {
     //       next: (res) => {
-    //         res.data.forEach((car) => {
-    //           if (!this.carsMap.size || !this.carsMap.has(car.mark)) {
-    //             this.carsMap.set(car.mark, 1);
+    //         res.data.forEach((tutor) => {
+    //           if (!this.carsMap.size || !this.carsMap.has(tutor.mark)) {
+    //             this.carsMap.set(tutor.mark, 1);
     //           } else {
-    //             this.carsMap.set(car.mark, (this.carsMap.get(car.mark)! + 1));
+    //             this.carsMap.set(tutor.mark, (this.carsMap.get(tutor.mark)! + 1));
     //           }
     //         });
     //       }

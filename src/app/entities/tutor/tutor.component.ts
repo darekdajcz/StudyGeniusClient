@@ -1,17 +1,17 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {TutorCriteria, TutorService} from './tutor.service';
-import {filter, finalize, Observable, take} from 'rxjs';
-import {TutorModel} from './model/tutor.model';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ConfirmDialogComponent} from '../../shared/components/confirm-dialog/confirm-dialog.component';
-import {TokenStorageService} from '../../shared/services/token-storage.service';
-import {UpdateTutorResponse} from './model/update-tutor-response';
-import {Pagination} from '../../shared/util/request-util';
-import {NgxSpinnerService} from 'ngx-spinner';
-import {TutorsResponse} from './model/tutors-response';
-import {faSort} from '@fortawesome/free-solid-svg-icons';
-import {FormBuilder} from '@angular/forms';
-import {TutorEditModalComponent} from "./components/car-edit-modal/tutor-edit-modal.component";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { TutorCriteria, TutorService } from './tutor.service';
+import { filter, finalize, Observable, take } from 'rxjs';
+import { TutorModel } from './model/tutor.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
+import { TokenStorageService } from '../../shared/services/token-storage.service';
+import { UpdateTutorResponse } from './model/update-tutor-response';
+import { Pagination } from '../../shared/util/request-util';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { TutorsResponse } from './model/tutors-response';
+import { faSort } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder } from '@angular/forms';
+import { TutorEditModalComponent } from './components/car-edit-modal/tutor-edit-modal.component';
 
 @Component({
   templateUrl: './tutor.component.html',
@@ -40,9 +40,11 @@ export class TutorComponent implements OnInit {
     price: null
   });
 
+  readonly sortArr = ['id', 'lastname', 'subject', 'price'];
+
   constructor(private readonly tutorService: TutorService, private readonly cdRef: ChangeDetectorRef,
-              private readonly modal: NgbModal, private readonly tokenService: TokenStorageService,
-              private readonly spinner: NgxSpinnerService, private readonly fb: FormBuilder) {
+    private readonly modal: NgbModal, private readonly tokenService: TokenStorageService,
+    private readonly spinner: NgxSpinnerService, private readonly fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -62,7 +64,7 @@ export class TutorComponent implements OnInit {
     modal.closed
       .pipe(take(1),
         filter((res) => res))
-      .subscribe({next: () => this.confirmDeleteClient(deleteId)});
+      .subscribe({ next: () => this.confirmDeleteClient(deleteId) });
   }
 
   detailsTutor(client: TutorModel): void {
@@ -75,7 +77,7 @@ export class TutorComponent implements OnInit {
     modal.closed
       .pipe(take(1),
         filter((res) => !!res))
-      .subscribe({next: ({tutor}) => this.saveClient(tutor)});
+      .subscribe({ next: ({ tutor }) => this.saveClient(tutor) });
   }
 
   private confirmDeleteClient(id: number): void {
@@ -101,9 +103,9 @@ export class TutorComponent implements OnInit {
       this.clear();
     }
 
-    const tutorCriteria = {...this.tutorSearchForm.value} as TutorCriteria;
-    console.log(this.tutorSearchForm.value)
-    console.log(tutorCriteria)
+    const tutorCriteria = { ...this.tutorSearchForm.value } as TutorCriteria;
+    console.log(this.tutorSearchForm.value);
+    console.log(tutorCriteria);
 
     const page = {
       limit: this.limit,
@@ -192,7 +194,6 @@ export class TutorComponent implements OnInit {
     //     this.spinner.show().then(() => this.loadAll(true))
     //   );
   }
-
 
   private initData(): void {
     this.loadAll();

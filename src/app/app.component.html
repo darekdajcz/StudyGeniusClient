@@ -25,7 +25,7 @@
   </div>
 
 </mat-toolbar>
-<mat-sidenav-container>
+<mat-sidenav-container class="bc">
   <mat-sidenav #sideNav="matSidenav">
     <h4 class="name">{{'author' | translate}}</h4>
 
@@ -36,25 +36,16 @@
         <mat-icon>home</mat-icon>
         <span>{{'section.home' | translate}}</span>
       </button>
-      <button mat-button class="menu-button" (click)="redirectTo('car')">
+      <button mat-button class="menu-button" (click)="redirectTo('tutor')">
         <mat-icon>person</mat-icon>
         <span>{{'section.tutor-database' | translate}}</span>
       </button>
 
-      <button mat-button class="menu-button" (click)="redirectTo('client')">
-        <mat-icon>person</mat-icon>
-        <span>{{'section.client-database' | translate}}</span>
-      </button>
-
-      <button mat-button class="menu-button" (click)="redirectTo('order')">
-        <mat-icon>person</mat-icon>
-        <span>{{'section.order-database' | translate}}</span>
-      </button>
-
-      <button mat-button class="menu-button" (click)="redirectTo('info')">
+      <button mat-button class="menu-button" (click)="redirectTo('admin')">
         <mat-icon>info</mat-icon>
-        <span>{{'section.info' | translate}}</span>
+        <span>{{'section.admin' | translate}}</span>
       </button>
+
       <button mat-button class="menu-button" (click)="redirectTo('login')">
         <mat-icon>login</mat-icon>
         <span>{{'section.login' | translate}}</span>

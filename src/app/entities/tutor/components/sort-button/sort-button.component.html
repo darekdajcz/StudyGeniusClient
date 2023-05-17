@@ -1,0 +1,13 @@
+<button *ngIf="predicate === sortButtonName" mat-raised-button color="primary" class="w-10 cursor-pointer">
+    <div class="d-flex justify-content-between">
+        {{('tutor.' + sortButtonName) | translate}}
+        <fa-icon [icon]="ascending ? 'sort-amount-up' : 'sort-amount-down'"></fa-icon>
+
+    </div>
+</button>
+<button *ngIf="predicate !== sortButtonName" mat-stroked-button class="w-10 cursor-pointer">
+    <div class="d-flex justify-content-between">
+        {{'tutor.' + sortButtonName | translate}}
+        <fa-icon icon="sort"></fa-icon>
+    </div>
+</button>

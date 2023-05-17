@@ -6,20 +6,20 @@ $my-palette: mat.$indigo-palette;
 @include mat.core();
 
 $my-primary-palette: (
-  50: #eceff1,
-  100: #cfd8dc,
-  200: #b0bec5,
-  300: #90a4ae,
-  400: #78909c,
-  500: #607d8b,
-  600: #546e7a,
-  700: #455a64,
-  800: #37474f,
-  900: #263238,
-  A100: #cfd8dc,
-  A200: #b0bec5,
-  A400: #78909c,
-  A700: #455a64,
+  50: #FBE9E7,
+  100: #FFCCBC,
+  200: #FFAB91,
+  300: #FF8A65,
+  400: #FF7043,
+  500: #FF572296,
+  600: #F4511E,
+  700: #E64A19,
+  800: #D84315,
+  900: #BF360C,
+  A100: #FF9E80,
+  A200: #FF6E40,
+  A400: #FF3D00,
+  A700: #DD2C00,
   contrast: (
     50: palette.$dark-primary-text,
     100: palette.$dark-primary-text,
@@ -73,4 +73,8 @@ $my-theme: mat.define-light-theme((
 
 .mat-button-toggle-disabled .mat-button-toggle-button {
   color: var(--primary);
+}
+
+.mat-mdc-outlined-button:not(:disabled) {
+  color: var(--dark-primary)!important;
 }

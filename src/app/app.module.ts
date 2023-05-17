@@ -26,36 +26,38 @@ import { MessagesHandlerInterceptor } from './shared/interceptors/messages-handl
 import { faIconsX } from './shared/font-awesome-icons/fa-icons';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CoreModule } from './shared/modules/core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatSidenavModule,
-        RouterModule,
-        FontAwesomeModule,
-        EntityModule,
-        InfiniteScrollModule,
-        MatButtonModule,
-        MatDividerModule,
-        NgbModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        AppRoutingModule,
-        SharedModule,
-        MatMenuModule,
-        HttpClientModule,
-        NgxSpinnerModule,
-        MatAutocompleteModule,
-        MatSelectModule,
-        MatTooltipModule,
-        TranslateModule.forRoot(translateModuleConfig),
-        MatToolbarModule
-    ],
+  imports: [
+    CoreModule,
+    BrowserModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    RouterModule,
+    EntityModule,
+    InfiniteScrollModule,
+    MatButtonModule,
+    MatDividerModule,
+    NgbModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    AppRoutingModule,
+    SharedModule,
+    MatMenuModule,
+    HttpClientModule,
+    NgxSpinnerModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatTooltipModule,
+    TranslateModule.forRoot(translateModuleConfig),
+    MatToolbarModule
+  ],
   providers: [
     authInterceptorProviders,
     translateServiceProvider,
@@ -63,12 +65,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
       provide: HTTP_INTERCEPTORS,
       useClass: MessagesHandlerInterceptor,
       multi: true
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(iconLibrary: FaIconLibrary) {
-    iconLibrary.addIcons(...faIconsX)
-  }
 }
