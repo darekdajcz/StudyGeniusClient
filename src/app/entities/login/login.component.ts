@@ -4,7 +4,7 @@ import {AuthService} from '../../shared/services/auth.service';
 import {TokenStorageService} from '../../shared/services/token-storage.service';
 import {filter} from 'rxjs';
 import {Router} from '@angular/router';
-import {AuthRequest} from "./models/auth-request.model";
+import {AuthRequest} from "./components/models/auth-request.model";
 
 @Component({
   templateUrl: './login.component.html',
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    alert('x')
     const authRequest = {...this.loginForm.value} as AuthRequest;
     this.authService.logIn(authRequest)
       .pipe(filter((res) => !!res))
@@ -54,11 +53,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  private static reloadPage(): void {
+  static reloadPage(): void {
     window.location.reload();
-  }
-
-  click() {
-    this.authService.tutorList().subscribe()
   }
 }

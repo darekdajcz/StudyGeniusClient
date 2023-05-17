@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../entities/login/models/user';
+import { User } from '../../entities/login/components/models/user';
 import {UserModel} from "./auth.service";
 
 const ACCESS_KEY = 'accessToken';

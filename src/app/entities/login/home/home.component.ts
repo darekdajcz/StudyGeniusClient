@@ -84,7 +84,6 @@ export class HomeComponent implements OnInit {
   }
 
   toggleOpen(): void {
-    // this.barLoaded = !this.barLoaded;
-    this.authService.tutorList().subscribe()
+    this.barLoaded = !this.barLoaded;
   }
 }

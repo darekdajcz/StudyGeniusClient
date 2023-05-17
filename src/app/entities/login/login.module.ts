@@ -14,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { loginRoute } from './login.route';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgChartsModule } from 'ng2-charts';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [

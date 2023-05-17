@@ -1,16 +1,17 @@
 import { inject, Injectable } from '@angular/core';
-import { CanLoad, Route, Router} from '@angular/router';
+import { CanActivate, CanLoad, Route, Router } from '@angular/router';
 import { TokenStorageService } from '../services/token-storage.service';
+import { AuthRole } from '../../entities/login/components/models/auth-role';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
+export class AdminGuard implements CanActivate {
   private readonly authService = inject(TokenStorageService);
   private readonly router = inject(Router);
 
-  canLoad(route: Route): boolean {
-    if (!!this.authService.getUser()?.role) {
+  canActivate(): boolean {
+    if (this.authService.getUser().role === AuthRole.ADMIN) {
       return true;
     }
     this.router.navigate(['/login']);

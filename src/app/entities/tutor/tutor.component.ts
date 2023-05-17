@@ -11,7 +11,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { TutorsResponse } from './model/tutors-response';
 import { faSort } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder } from '@angular/forms';
-import { TutorEditModalComponent } from './components/car-edit-modal/tutor-edit-modal.component';
+import { TutorEditModalComponent } from './components/tutor-edit-modal/tutor-edit-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './tutor.component.html',
@@ -44,7 +45,8 @@ export class TutorComponent implements OnInit {
 
   constructor(private readonly tutorService: TutorService, private readonly cdRef: ChangeDetectorRef,
     private readonly modal: NgbModal, private readonly tokenService: TokenStorageService,
-    private readonly spinner: NgxSpinnerService, private readonly fb: FormBuilder) {
+    private readonly spinner: NgxSpinnerService, private readonly fb: FormBuilder,
+    private readonly router: Router) {
   }
 
   ngOnInit(): void {
@@ -164,10 +166,6 @@ export class TutorComponent implements OnInit {
     });
   }
 
-  onSearchKey(): void {
-    // this.searchTermChanged.next(this.tutorCriteria.subject);
-  }
-
   toggleSearchBox(): void {
     this.showSearchBox = !this.showSearchBox;
     if (!this.showSearchBox) {
@@ -202,5 +200,9 @@ export class TutorComponent implements OnInit {
 
   isNextPageDisabled(): boolean {
     return this.totalElements < (this.page + 1) * this.limit;
+  }
+
+  reservationSection(id: number) {
+    this.router.navigate([''])
   }
 }

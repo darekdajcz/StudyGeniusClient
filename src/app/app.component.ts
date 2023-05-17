@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getUser().email;
+    this.isLoggedIn = !!this.tokenStorageService.getUser()?.email;
   }
 
   ngAfterViewInit() {

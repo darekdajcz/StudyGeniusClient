@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../shared/guard/auth.guard';
 import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from '../shared/guard/admin.guard';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { AdminComponent } from './admin/admin.component';
       }, {
         path: 'admin',
         loadComponent: () => import('./admin/admin.component').then(module => module.AdminComponent),
-        canLoad: [AuthGuard]
+        canActivate: [AdminGuard]
       }
     ]),
     CommonModule
