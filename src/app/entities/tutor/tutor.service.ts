@@ -2,13 +2,13 @@ import {inject, Injectable} from '@angular/core';
 import {SERVER_API_URL} from '../../app.constants';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {TutorModel} from './model/tutor.model';
 import {TutorsResponse} from './model/tutors-response';
 import {UpdateTutorResponse} from './model/update-tutor-response';
 import {DeleteResponse} from './model/delete-response';
 import {createRequestOption, Pagination} from '../../shared/util/request-util';
 import {AddTutorRequest} from "./model/add-tutor-request";
 import {UpdateTutorRequest} from "./model/update-tutor-request";
+import { TutorModel } from './model/tutor.model';
 
 export interface TutorCriteria {
   id?: number | null;

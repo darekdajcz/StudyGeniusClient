@@ -5,17 +5,28 @@ export interface TutorModel {
   email: string;
   subject: string;
   description: string;
-  price?: number;
+  place: PlaceEnum[];
+  phoneNumber: string;
+  badges: BadgesEnum[];
+  reservations: Reservation[];
+  price: number | null;
 }
 
-export enum ChestType {
-  AUTOMATIC = 'AUTOMATIC',
-  MANUAL = 'MANUAL'
+enum PlaceEnum {
+  TUTOR_PLACE = 'TUTOR_PLACE',
+  STUDENT_PLACE = 'STUDENT_PLACE',
+  ONLINE = 'ONLINE',
 }
 
-export enum TutorType {
-  SMALL = 'SMALL',
-  MID = 'BIG',
-  BIG = 'SMALL',
-  BUS = 'BUS'
+enum BadgesEnum {
+  APPROVED = 'APPROVED',
+  CERTIFICATES = 'CERTIFICATES',
+}
+
+interface Reservation {
+  id: number;
+  date: string;
+  hour: string;
+  lessonTime: string;
+  place: PlaceEnum;
 }

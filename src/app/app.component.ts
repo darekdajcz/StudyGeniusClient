@@ -47,4 +47,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
+
+  navigateToProfile(): void {
+    this.router.navigate(['account-profile']).then(() => this.opened = false);
+  }
 }

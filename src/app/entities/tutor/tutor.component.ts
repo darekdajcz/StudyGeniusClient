@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TutorCriteria, TutorService } from './tutor.service';
 import { filter, finalize, Observable, take } from 'rxjs';
-import { TutorModel } from './model/tutor.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { TokenStorageService } from '../../shared/services/token-storage.service';
@@ -13,6 +12,8 @@ import { faSort } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder } from '@angular/forms';
 import { TutorEditModalComponent } from './components/tutor-edit-modal/tutor-edit-modal.component';
 import { Router } from '@angular/router';
+import { AuthRole } from '../login/components/models/auth-role';
+import { TutorModel } from './model/tutor.model';
 
 @Component({
   templateUrl: './tutor.component.html',
@@ -54,7 +55,7 @@ export class TutorComponent implements OnInit {
   }
 
   canEdit(): boolean {
-    return true;
+    return this.tokenService.getUser().role !== AuthRole.STUDENT;
   }
 
   deleteTutor($event: number): void {
@@ -203,6 +204,6 @@ export class TutorComponent implements OnInit {
   }
 
   reservationSection(id: number) {
-    this.router.navigate([''])
+    this.router.navigate(['tutor-profile', id])
   }
 }

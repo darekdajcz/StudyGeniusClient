@@ -1,21 +1,20 @@
-import {Component, OnInit} from '@angular/core';
-import {NgbActiveModal, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import {TutorModel, ChestType, TutorType} from '../../model/tutor.model';
-import {FormControl, NonNullableFormBuilder} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { TutorModel } from '../../model/tutor.model';
+import { FormControl, NonNullableFormBuilder } from '@angular/forms';
 
 @Component({
   templateUrl: './tutor-edit-modal.component.html',
   styles: [`.modal-body {
-    max-height: 70vh;
-    overflow-y: scroll;
-  }`]
+      max-height: 70vh;
+      overflow-y: scroll;
+  }`
+  ]
 })
 export class TutorEditModalComponent implements OnInit {
 
   tutorModel?: TutorModel;
   details = false;
-  ChestType = ChestType;
-  TutorType = TutorType;
 
   tutorForm = this.fb.group({
     firstname: '',
@@ -79,7 +78,7 @@ export class TutorEditModalComponent implements OnInit {
         lastname: this.tutorModel.lastname || '',
         email: this.tutorModel.email || '',
         subject: this.tutorModel.subject,
-        description: this.tutorModel.description || ChestType.MANUAL,
+        description: this.tutorModel.description || '',
         price: this.tutorModel.price || 0
       });
     }
@@ -90,8 +89,8 @@ export class TutorEditModalComponent implements OnInit {
   }
 
   saveTutor(): void {
-    const tutor = {...this.tutorForm.getRawValue(), id: this.tutorModel?.id} as TutorModel;
+    const tutor = { ...this.tutorForm.getRawValue(), id: this.tutorModel?.id } as TutorModel;
 
-    this.activeModal.close({tutor});
+    this.activeModal.close({ tutor });
   }
 }

@@ -1,6 +1,6 @@
 <mat-toolbar class="d-flex justify-content-between">
   <div>
-    <button mat-icon-button *ngIf="sideNav.mode === 'over'" (click)="sideNav.toggle()">
+    <button mat-icon-button  (click)="sideNav.toggle()">
       <mat-icon *ngIf="!sideNav.opened">
         menu
       </mat-icon>
@@ -19,6 +19,7 @@
         <button *ngIf="!isLoggedIn" mat-menu-item (click)="redirectTo('login')">{{'button.login' | translate}}</button>
         <button *ngIf="!isLoggedIn" mat-menu-item
                 (click)="redirectTo('sign-up')">{{'button.sign-up' | translate}}</button>
+        <button *ngIf="isLoggedIn" mat-menu-item (click)="navigateToProfile()">{{'button.tutor-profile' | translate}}</button>
         <button *ngIf="isLoggedIn" mat-menu-item (click)="logout()">{{'button.logout' | translate}}</button>
       </mat-menu>
     </div>
