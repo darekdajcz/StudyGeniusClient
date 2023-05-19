@@ -1,0 +1,56 @@
+<div class="page background">
+    <div class="d-flex col-md-12 gap-5">
+        <div class="col-md-4">
+            <div class="profile-section mb-5">
+                <div class="u-common-info">
+                    <div class="team-image" id="profile-image-wrap">
+                        <div></div>
+                        <i></i>
+                    </div>
+                    <div class="u-initials">
+                        <h3>Dariusz Dajcz</h3>
+                        <span class="u-role-name">Uczen</span>
+                    </div>
+                    <div class="dropdown-profile">
+                        <mat-icon>info</mat-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-section">
+                <ul>
+                    <li routerLink="/account-profile">
+                        <mat-icon class="mt-2">info</mat-icon>
+                        Mój profil
+                    </li>
+
+                    <li routerLink="/account-profile/add-announcement">
+                        <mat-icon class="mt-2">info</mat-icon>
+                        Dodaj ogłoszenie
+                    </li>
+
+                    <li>
+                        <mat-icon>info</mat-icon>
+                        Konwersacje
+                    </li>
+                    <li>
+                        <mat-icon>info</mat-icon>
+                        Lekcje
+                    </li>
+                    <li>
+                        <mat-icon>info</mat-icon>
+                        Mój pakiet
+                    </li>
+                    <li>
+                        <mat-icon>info</mat-icon>
+                        Moi korepetytorzy
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="profile-block-content profile-section">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
