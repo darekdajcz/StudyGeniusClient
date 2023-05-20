@@ -97,7 +97,8 @@
                             <div>
                                 <h2>Harmonogram</h2>
                                 <mat-card class="demo-inline-calendar-card">
-                                    <mat-calendar [(selected)]="selected"></mat-calendar>
+                                    <mat-calendar [(selected)]="selected"
+                                                  [dateClass]="hideWeekends"></mat-calendar>
                                 </mat-card>
                             </div>
                             <div class="ms-4 mt-5 pt-5">
