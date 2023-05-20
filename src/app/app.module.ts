@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -65,7 +65,14 @@ import { CoreModule } from './shared/modules/core/core.module';
       provide: HTTP_INTERCEPTORS,
       useClass: MessagesHandlerInterceptor,
       multi: true
-    }
+    }, {
+      provide: LOCALE_ID,
+      useValue: 'pl'
+    },
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'Zł'
+    },
   ],
   bootstrap: [AppComponent]
 })

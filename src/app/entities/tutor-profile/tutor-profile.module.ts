@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     TutorProfileComponent
@@ -27,7 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatNativeDateModule,
     MatButtonToggleModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule
   ]
 })
 export class TutorProfileModule { }

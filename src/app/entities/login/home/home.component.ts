@@ -1,86 +1,58 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit, ViewChild} from '@angular/core';
-import {TokenStorageService} from '../../../shared/services/token-storage.service';
-import {ChartType} from 'chart.js';
-import {BaseChartDirective} from 'ng2-charts';
-import {TutorService} from '../../tutor/tutor.service';
-import {TranslateService} from '@ngx-translate/core';
-import {AuthService, UserModel} from "../../../shared/services/auth.service";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject, Input,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
+import { TokenStorageService } from '../../../shared/services/token-storage.service';
+import { ChartType } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import { TutorService } from '../../tutor/tutor.service';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthService, UserModel } from '../../../shared/services/auth.service';
+import { map, share, Subscription, timer } from 'rxjs';
+
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild(BaseChartDirective) barChart: BaseChartDirective;
   user: UserModel;
-  carsMap = new Map<string, number>();
   barLoaded = false;
-  private readonly authService = inject(AuthService)
-
-  barChartOptions: any = {
-    responsive: true,
-    scaleShowValues: true,
-    scaleValuePaddingX: 1000,
-    scaleValuePaddingY: 1000,
-    plugins: {
-      labels: {
-        render: 'value'
-      }
-    },
-    title: {
-      display: true, text: 'Current Subject Status',
-      fontSize: 20,
-      color: 'black'
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false
-        }
-      },
-      y: {
-        grid: {
-          display: false
-        }
-      }
-    }
-  };
-  barChartLabels: string[] = [];
-  barChartData: any[] = [];
-  barChartType: ChartType = 'bar';
-  barChartLegend = true;
-
+  @Input() showClock = false;
+  actualDateTime = new Date();
+  idInterval: any;
+  hours: number;
+  minutes: number;
+  seconds: number;
 
   constructor(private readonly tokenStorageService: TokenStorageService, private readonly carService: TutorService
-    , private readonly translateService: TranslateService) {
+    , private readonly translateService: TranslateService, private readonly cdRef: ChangeDetectorRef) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.user = this.tokenStorageService.getUser();
-    // this.carService.getAllCars({}, null, true)
-    //   .pipe(finalize(() => {
-    //     this.barChartLabels = [...this.carsMap.keys()];
-    //     const dataX = [...this.carsMap.values()];
-    //     this.barChartData.push({
-    //       data: dataX,
-    //       label: this.translateService.instant('tutor.mark'),
-    //       backgroundColor: '#455a64'
-    //     });
-    //     this.barChart?.update();
-    //   }))
-    //   .subscribe(
-    //     {
-    //       next: (res) => {
-    //         res.data.forEach((tutor) => {
-    //           if (!this.carsMap.size || !this.carsMap.has(tutor.mark)) {
-    //             this.carsMap.set(tutor.mark, 1);
-    //           } else {
-    //             this.carsMap.set(tutor.mark, (this.carsMap.get(tutor.mark)! + 1));
-    //           }
-    //         });
-    //       }
-    //     }
-    //   );
+
+    this.idInterval = setInterval(() => {
+      let { actualDateTime } = this;
+      actualDateTime = new Date();
+      this.hours = actualDateTime.getHours();
+      this.minutes = actualDateTime.getMinutes();
+      this.seconds = actualDateTime.getSeconds();
+      this.cdRef.detectChanges();
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    console.log('Clock Component is detroy');
+    if (this.idInterval) {
+      clearInterval(this.idInterval);
+    }
   }
 
   toggleOpen(): void {

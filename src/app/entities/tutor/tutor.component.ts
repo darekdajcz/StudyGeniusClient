@@ -203,7 +203,7 @@ export class TutorComponent implements OnInit {
     return this.totalElements < (this.page + 1) * this.limit;
   }
 
-  reservationSection(id: number) {
+  reservationSection(id?: number) {
     this.router.navigate(['tutor-profile', id])
   }
 }

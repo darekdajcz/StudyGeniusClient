@@ -1,5 +1,5 @@
 export interface TutorModel {
-  id: number;
+  id?: number;
   firstname: string;
   lastname: string;
   email: string;
@@ -12,15 +12,16 @@ export interface TutorModel {
   price: number | null;
 }
 
-enum PlaceEnum {
+export enum PlaceEnum {
   TUTOR_PLACE = 'TUTOR_PLACE',
   STUDENT_PLACE = 'STUDENT_PLACE',
   ONLINE = 'ONLINE',
 }
 
-enum BadgesEnum {
+export enum BadgesEnum {
   APPROVED = 'APPROVED',
   CERTIFICATES = 'CERTIFICATES',
+  STAR = 'STAR',
 }
 
 interface Reservation {

@@ -1,23 +1,26 @@
 <div class="h-100 login-background">
-  <div class="home-title h-100 opacity-100 d-flex flex-column">
-    <div>{{'home.hello' | translate}}
-      <span *ngIf="user" style="color: #263238">{{user.firstname}} {{user.lastname}} {{user.role}}</span>
-      {{'home.main-app' | translate}}
+    <div class="home-title h-100 opacity-100 d-flex flex-column">
+        <div>{{'home.hello' | translate}}
+            <span *ngIf="user" style="color: #263238">{{user.firstname}} {{user.lastname}} {{user.role}}</span>
+            {{'home.main-app' | translate}}
+        </div>
+        <a *ngIf="!user" routerLink="/login">{{'home.login' | translate}}</a>
     </div>
-    <a *ngIf="!user" routerLink='/login'>{{'home.login' | translate}}</a>
-  </div>
-  <div *ngIf="user" class="d-flex justify-content-center p-2">
-    <button mat-flat-button color="primary" (click)="toggleOpen()">
-      {{'chart_toggle' | translate}}
-    </button>
-  </div>
-  <div id="lineChart" *ngIf="barLoaded">
-    <canvas baseChart
-            [options]="barChartOptions"
-            [datasets]="this.barChartData"
-            [labels]="barChartLabels"
-            [legend]="barChartLegend"
-            [type]="barChartType">
-    </canvas>
-  </div>
+
+    <div *ngIf="user" class="d-flex justify-content-center p-2">
+        <button mat-flat-button color="primary" (click)="toggleOpen()">
+            {{'chart_toggle' | translate}}
+        </button>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="clock-cader">
+            <ng-container *ngIf="hours && minutes && seconds">
+                <div class="date text-center">
+                    {{ actualDateTime | date }}  </div>
+                <div class="hour">
+                    {{ hours | number:'2.0' }} : {{ minutes  | number:'2.0' }} : {{ seconds | number:'2.0' }}
+                </div>
+            </ng-container>
+        </div>
+    </div>
 </div>

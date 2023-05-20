@@ -9,13 +9,19 @@
                     </div>
                     <div class="u-initials">
                         <h3 class="mainFormText" id="namePrH">
-                            <a href="https://edualy.com/pl/profil/3763">Anna<br>Kaczanowska</a>
+                            <a href="">
+                                {{tutor.firstname}}
+                                <br>
+                                {{tutor.lastname}}
+                            </a>
                         </h3>
-                        <span class="u-address">Nauczyciel matematyki</span>
+                        <span class="u-address">
+                            Nauczyciel: {{tutor.subject}}
+                        </span>
                         <div class="u-status-line">
-                            <i class="c-icon c-icon-verified" title="Zweryfikowany" aria-hidden="true"></i>
-                            <i class="c-icon c-icon-chalice" title="5+ lat doświadczenia" aria-hidden="true"></i>
-                            <i class="c-icon c-icon-star" title="Certyfikowany" aria-hidden="true"></i>
+                            <fa-icon class="me-2" *ngIf="hasBadge(Badges.APPROVED)" icon="check-circle"></fa-icon>
+                            <fa-icon class="me-2" *ngIf="hasBadge(Badges.CERTIFICATES)" icon="trophy"></fa-icon>
+                            <fa-icon class="me-2" *ngIf="hasBadge(Badges.STAR)" icon="star"></fa-icon>
                         </div>
                     </div>
                 </div>
@@ -24,19 +30,33 @@
                         <h5>Miejsca nauczania:</h5>
                         <div class="place-prices">
                             <div>
-                                <i class="c-icon c-icon-checkbox success  "></i> U mnie
+                                <fa-icon class="me-2"
+                                         [icon]="hasPlace(Places.TUTOR_PLACE) ? 'check-circle' :  'cancel'">
+                                </fa-icon>
+                                U mnie
                             </div>
                             <div>
-                                <i class="c-icon c-icon-checkbox success  "></i> U ucznia
+                                <fa-icon class="me-2"
+                                         [icon]="hasPlace(Places.STUDENT_PLACE) ? 'check-circle' :  'cancel'">
+                                </fa-icon>
+                                U ucznia
                             </div>
                             <div>
-                                <i class="c-icon c-icon-checkbox success checked success "></i> Online
+                                <fa-icon class="me-2" *ngIf="hasPlace(Places.ONLINE)"
+                                         [icon]="hasPlace(Places.ONLINE) ? 'check-circle' :  'cancel'">
+                                </fa-icon>
+                                Online
                             </div>
                         </div>
                     </div>
                     <div class="u-learn-prices">
                         <h5>Z pakietem taniej</h5>
-                        <div><span>od</span> &nbsp;<strong>82.00 PLN</strong></div>
+                        <div>
+                            <span>od</span> &nbsp;
+                            <strong>
+                                {{tutor.price | currency : 'zł':'symbol-narrow'}}
+                            </strong>
+                        </div>
                         <a href="https://edualy.com/pl/cennik-korepetycji">Zobacz nasze pakiety</a>
                     </div>
                 </div>
@@ -65,7 +85,7 @@
                                 <div class="col-sm-9">
                                     <div class="widget-info">
                                         <small>Email:</small>
-                                        <span>darek.dajcz@gmail.com</span>
+                                        <span>{{tutor.email}}</span>
                                         <mat-icon class="icon-copy">file_copy</mat-icon>
                                     </div>
                                 </div>
