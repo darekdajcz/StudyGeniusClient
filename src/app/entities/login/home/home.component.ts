@@ -31,8 +31,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   minutes: number;
   seconds: number;
 
-  constructor(private readonly tokenStorageService: TokenStorageService, private readonly carService: TutorService
-    , private readonly translateService: TranslateService, private readonly cdRef: ChangeDetectorRef) {
+  constructor(private readonly tokenStorageService: TokenStorageService, private readonly carService: TutorService,
+    private readonly translateService: TranslateService, private readonly cdRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {

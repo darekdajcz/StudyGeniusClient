@@ -8,7 +8,7 @@ import { DeleteResponse } from './model/delete-response';
 import { createRequestOption, Pagination } from '../../shared/util/request-util';
 import { AddTutorRequest } from './model/add-tutor-request';
 import { UpdateTutorRequest } from './model/update-tutor-request';
-import { TutorModel } from './model/tutor.model';
+import { TutorDetailModel, TutorModel } from './model/tutor.model';
 
 export interface TutorCriteria {
   id?: number | null;
@@ -36,8 +36,12 @@ export class TutorService {
     return this.http.post<TutorsResponse>(`${ this.resourceUrl }/list`, tutorsCriteria, { params });
   };
 
-  getTutorById = (id: string): Observable<TutorModel> => {
-    return this.http.get<TutorModel>(`${ this.resourceUrl }/${ id }`);
+  getTutorById = (id: number): Observable<TutorDetailModel> => {
+    return this.http.get<TutorDetailModel>(`${ this.resourceUrl }/${ id }`);
+  };
+
+  getTutorByUserId = (id: number): Observable<TutorModel> => {
+    return this.http.get<TutorModel>(`${ this.resourceUrl }/user/${ id }`);
   };
 
   createTutor = (req: Omit<TutorModel, 'id'>): Observable<UpdateTutorResponse> => {

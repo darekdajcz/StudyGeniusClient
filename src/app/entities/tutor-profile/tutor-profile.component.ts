@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TutorService } from '../tutor/tutor.service';
 import { ActivatedRoute } from '@angular/router';
-import { BadgesEnum, PlaceEnum, TutorModel } from '../tutor/model/tutor.model';
+import { BadgesEnum, PlaceEnum, TutorDetailModel, TutorModel } from '../tutor/model/tutor.model';
 import { MatCalendarCellClassFunction, MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import * as moment from 'moment';
+import { DaysNumber } from '../tutor/model/days.enum';
 
 interface AvailableHour {
   value: string;
@@ -20,8 +21,9 @@ export class TutorProfileComponent implements OnInit {
   Badges = BadgesEnum;
   Places = PlaceEnum;
 
+  hoursAvailable: string[] = [];
   selected: Date | null = new Date(2023, 4, 19);
-  tutor: TutorModel;
+  tutor: TutorDetailModel;
   foods: AvailableHour[] = [
     { value: '0', viewValue: '16:00' },
     { value: '1', viewValue: '17:00' },
@@ -34,34 +36,29 @@ export class TutorProfileComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
     this.tutorService.getTutorById(id).subscribe({
-      next: (tutor) => this.tutor = tutor
+      next: (tutor) => {
+        this.tutor = tutor;
+        const withoutBrackets = this.tutor.hoursAvailable.slice(1, -1);
+        this.hoursAvailable = withoutBrackets.split(', ');
+      }
     });
+
   }
 
   hasBadge(badge: BadgesEnum): boolean {
-    return this.tutor.badges.includes(badge);
+    return this.tutor?.badges.includes(badge);
   }
 
   hasPlace(place: PlaceEnum): boolean {
-    return this.tutor.place.includes(place);
+    return this.tutor?.place.includes(place);
   }
 
-  myHolidayDates = [
-    new Date('12/1/2020'),
-    new Date('12/20/2020'),
-    new Date('12/17/2020'),
-    new Date('12/25/2020'),
-    new Date('12/4/2020'),
-    new Date('12/7/2020'),
-    new Date('12/12/2020'),
-    new Date('12/11/2020'),
-    new Date('12/26/2020'),
-    new Date('12/25/2020')
-  ];
-
   hideWeekends = (date: Date): MatCalendarCellCssClasses => {
-    return moment(date).day() === 6 || moment(date).day() === 5
-      ? 'weekend'
-      : '';
+    const numbersX = this.tutor?.daysAvailable
+      .map((days) => DaysNumber[days]);
+
+    return numbersX.includes(moment(date).day())
+      ? ''
+      : 'weekend';
   };
 }

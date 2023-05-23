@@ -8,6 +8,7 @@ import {AuthRequest} from "../../entities/login/components/models/auth-request.m
 import { RegisterRequest } from '../../entities/login/components/models/register-request';
 
 export interface UserModel {
+  id: number;
   firstname: string;
   lastname: string;
   email: string;

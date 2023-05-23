@@ -5,7 +5,8 @@ import { BadgesEnum, PlaceEnum, TutorModel } from '../../../tutor/model/tutor.mo
 import { TranslateModule } from '@ngx-translate/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import { NgIf, WeekDay } from '@angular/common';
+import { DaysEnum } from '../../../tutor/model/days.enum';
 
 @Component({
   templateUrl: './add-reservation-modal.component.html',
@@ -34,10 +35,12 @@ export class AddReservationModalComponent implements OnInit {
     email: ['', Validators.required],
     subject: ['', Validators.required],
     description: ['', Validators.required],
-    place: [[], Validators.required],
+    place: [[PlaceEnum.TUTOR_PLACE], Validators.required],
     phoneNumber: ['', Validators.required],
-    badges: [[], Validators.required],
-    price: [0, Validators.required]
+    badges: [[BadgesEnum.STAR], Validators.required],
+    price: [0, Validators.required],
+    daysAvailable: [[DaysEnum.MONDAY], Validators.required],
+    hoursAvailable: [[''], Validators.required]
   });
 
   constructor(private readonly activeModal: NgbActiveModal, private readonly fb: NonNullableFormBuilder) {
@@ -99,15 +102,21 @@ export class AddReservationModalComponent implements OnInit {
   }
 
   private initForm(): void {
+    const { tutorModel } = this;
     if (this.tutorModel) {
-      // this.tutorForm.patchValue({
-      //   firstname: this.tutorModel.firstname || '',
-      //   lastname: this.tutorModel.lastname || '',
-      //   email: this.tutorModel.email || '',
-      //   subject: this.tutorModel.subject,
-      //   description: this.tutorModel.description || '',
-      //   price: this.tutorModel.price || 0
-      // });
+      this.tutorForm.patchValue({
+        firstname: tutorModel!.firstname || '',
+        lastname: tutorModel!.lastname || '',
+        email: tutorModel!.email || '',
+        subject: tutorModel!.subject,
+        description: tutorModel!.description || '',
+        price: tutorModel!.price || 0,
+        place: tutorModel!.place,
+        phoneNumber: tutorModel!.phoneNumber || '',
+        badges: tutorModel!.badges,
+        daysAvailable: tutorModel!.daysAvailable,
+        hoursAvailable: ['']
+      });
     }
 
     if (this.details) {

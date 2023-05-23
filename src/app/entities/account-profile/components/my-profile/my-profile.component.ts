@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { filter } from 'rxjs';
+import { TutorService } from '../../../tutor/tutor.service';
+import { TutorModel } from '../../../tutor/model/tutor.model';
+import { UserModel } from '../../../../shared/services/auth.service';
+import { TokenStorageService } from '../../../../shared/services/token-storage.service';
 
 @Component({
   selector: 'app-my-tutor-profile',
@@ -11,5 +16,14 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   standalone: true
 })
-export class MyProfileComponent {
+export class MyProfileComponent implements OnInit {
+  user: UserModel;
+  tutor: TutorModel;
+
+  constructor(private readonly tokenService: TokenStorageService) {
+  }
+
+  ngOnInit(): void {
+    this.user = this.tokenService.getUser();
+  }
 }

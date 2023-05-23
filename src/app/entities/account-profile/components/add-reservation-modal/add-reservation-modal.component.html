@@ -1,90 +1,104 @@
 <div class="modal-header">
-  <h4>{{(tutorModel ? 'header.edit' : 'header.add') | translate}} {{'tutor.to-tutor'| translate}}</h4>
-  <button class="btn-close" type="button" (click)="onDismiss()"></button>
+    <h4>{{(tutorModel ? 'header.edit' : 'header.add') | translate}} {{'tutor.to-tutor'| translate}}</h4>
+    <button class="btn-close" type="button" (click)="onDismiss()"></button>
 </div>
 <div class="modal-body pb-0">
-  <form class="pt-2 ps-5 pe-5">
-    <div class="login-container">
-      <form class="d-flex flex-column align-items-center mb-4" [formGroup]="tutorForm">
+    <form class="pt-2 ps-5 pe-5">
+        <div class="login-container">
+            <form class="d-flex flex-column align-items-center mb-4" [formGroup]="tutorForm">
 
-        <mat-form-field>
-          <mat-label>{{'tutor.firstname' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="firstname">
-          <mat-error *ngIf="firstnameControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.firstname' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="firstname">
+                    <mat-error *ngIf="firstnameControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{'tutor.lastname' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="lastname">
-          <mat-error *ngIf="lastnameControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.lastname' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="lastname">
+                    <mat-error *ngIf="lastnameControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{'tutor.email' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="email">
-          <mat-error *ngIf="emailControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.email' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="email">
+                    <mat-error *ngIf="emailControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{'tutor.subject' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="subject">
-          <mat-error *ngIf="subjectControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.subject' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="subject">
+                    <mat-error *ngIf="subjectControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{'tutor.description' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="description">
-          <mat-error *ngIf="descriptionControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.description' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="description">
+                    <mat-error *ngIf="descriptionControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{'tutor.price' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="price">
-          <mat-error *ngIf="priceControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.price' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="price">
+                    <mat-error *ngIf="priceControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{'tutor.place' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="place">
-          <mat-error *ngIf="placeControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.place' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="place">
+                    <mat-error *ngIf="placeControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{'tutor.phoneNumber' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="phoneNumber">
-          <mat-error *ngIf="phoneNumberControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.phoneNumber' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="phoneNumber">
+                    <mat-error *ngIf="phoneNumberControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>{{'tutor.badges' | translate}}</mat-label>
-          <input autofocus type="text" matInput formControlName="badges">
-          <mat-error *ngIf="badgesControl.hasError('required')">
-            {{'form.required' | translate}}
-          </mat-error>
-        </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'tutor.badges' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="badges">
+                    <mat-error *ngIf="badgesControl.hasError('required')">
+                        {{'form.required' | translate}}
+                    </mat-error>
+                </mat-form-field>
 
-      </form>
-    </div>
-  </form>
+                <mat-form-field>
+                    <mat-label>{{'tutor.daysAvailable' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="daysAvailable">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>{{'tutor.hoursAvailable' | translate}}</mat-label>
+                    <input autofocus type="text" matInput formControlName="hoursAvailable">
+                </mat-form-field>
+
+            </form>
+        </div>
+    </form>
 </div>
 <div *ngIf="!details" class="modal-footer justify-content-between">
-  <button mat-stroked-button color="warn" (click)="onDismiss()">{{'button.cancel' | translate}}</button>
-  <button mat-raised-button color="primary" (click)="saveTutor()"
-          [disabled]="tutorForm.invalid">{{'button.save' | translate}}</button>
+    <button mat-stroked-button color="warn" (click)="onDismiss()">
+        {{'button.cancel' | translate}}
+    </button>
+    <button mat-raised-button color="primary" (click)="saveTutor()"
+            [disabled]="tutorForm.invalid">
+        {{'button.save' | translate}}
+    </button>
 </div>

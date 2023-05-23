@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TutorModel } from '../../../tutor/model/tutor.model';
@@ -7,6 +7,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddReservationModalComponent } from '../add-reservation-modal/add-reservation-modal.component';
 import { UpdateTutorResponse } from '../../../tutor/model/update-tutor-response';
 import { TutorService } from '../../../tutor/tutor.service';
+import { UserModel } from '../../../../shared/services/auth.service';
+import { TokenStorageService } from '../../../../shared/services/token-storage.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-active-announcements',
@@ -15,17 +18,36 @@ import { TutorService } from '../../../tutor/tutor.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    NgIf
   ],
   standalone: true
 })
-export class ActiveAnnouncementComponent {
+export class ActiveAnnouncementComponent implements OnInit {
 
-  constructor(private readonly modal: NgbModal, private readonly tutorService: TutorService) {
+  user: UserModel;
+  tutor: TutorModel;
+
+  constructor(private readonly modal: NgbModal, private readonly tutorService: TutorService,
+    private readonly tokenService: TokenStorageService, private readonly cdRef: ChangeDetectorRef) {
   }
 
-  addAnnouncement(tutor?: TutorModel, details = false): void {
-    const modal = AddReservationModalComponent.open(this.modal, tutor, details);
+  ngOnInit(): void {
+    this.user = this.tokenService.getUser();
+    this.tutorService
+      .getTutorByUserId(this.user.id)
+      .pipe(filter((tutor) => !!tutor))
+      .subscribe({
+        next: (tutor) => {
+          this.tutor = tutor;
+          this.cdRef.detectChanges();
+        }
+      });
+  }
+
+  addAnnouncement(): void {
+    const tutor = this.tutor || null;
+    const modal = AddReservationModalComponent.open(this.modal, tutor);
 
     modal.closed
       .pipe(take(1),

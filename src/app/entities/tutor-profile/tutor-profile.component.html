@@ -1,6 +1,6 @@
 <div class="page background">
-    <div class="col-md-12 d-flex gap-3">
-        <div class="col-md-4">
+    <div class="col-md-12 d-flex flex-md-row flex-sm-column gap-3">
+        <div class="col-md-4 col-sm-12">
             <div id="profile-block" class=" mainFormText profile-white-block">
                 <div class="u-common-info ">
                     <div class="team-image profile-image-wrap">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 col-sm-12">
             <div class="profile-block-content profile-section">
                 <mat-tab-group [selectedIndex]="1">
                     <mat-tab label="Opis">
@@ -117,8 +117,8 @@
                                 <mat-form-field>
                                     <mat-label>Wybierz godziny</mat-label>
                                     <mat-select>
-                                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                                            {{food.viewValue}}
+                                        <mat-option *ngFor="let hour of hoursAvailable" [value]="hour">
+                                            {{hour}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
