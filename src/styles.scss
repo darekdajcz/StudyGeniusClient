@@ -31,6 +31,10 @@ body {
   color: var(--gray);
 }
 
+.cdk-overlay-container, .cdk-overlay-pane {
+  z-index: 9999 !important;
+}
+
 .mat-form-field {
   font-size: 12px;
 }

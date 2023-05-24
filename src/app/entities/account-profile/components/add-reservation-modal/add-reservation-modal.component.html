@@ -79,9 +79,15 @@
                     </mat-error>
                 </mat-form-field>
 
+                {{days | json}}
                 <mat-form-field>
                     <mat-label>{{'tutor.daysAvailable' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="daysAvailable">
+                        <mat-select formControlName="daysAvailable" multiple appendTo="body">
+                            <mat-option *ngFor="let day of days"  appendTo="body"
+                                        [value]="day">
+                                {{day}}
+                            </mat-option>
+                        </mat-select>
                 </mat-form-field>
 
                 <mat-form-field>

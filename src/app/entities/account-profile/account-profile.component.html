@@ -32,7 +32,8 @@
                         <mat-icon>info</mat-icon>
                         Konwersacje
                     </li>
-                    <li *ngIf="user.role === AuthRole.STUDENT" routerLink="/account-profile/student-lessons">
+
+                    <li *ngIf="user.role === AuthRole.STUDENT || user.role === AuthRole.TUTOR" routerLink="/account-profile/student-lessons">
                         <mat-icon>info</mat-icon>
                         Lekcje
                     </li>

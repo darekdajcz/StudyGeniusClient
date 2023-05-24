@@ -5,23 +5,32 @@ import { BadgesEnum, PlaceEnum, TutorModel } from '../../../tutor/model/tutor.mo
 import { TranslateModule } from '@ngx-translate/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf, WeekDay } from '@angular/common';
+import { JsonPipe, NgForOf, NgIf, WeekDay } from '@angular/common';
 import { DaysEnum } from '../../../tutor/model/days.enum';
 import { TokenStorageService } from '../../../../shared/services/token-storage.service';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   templateUrl: './add-reservation-modal.component.html',
-  styles: [`.modal-body {
-      max-height: 70vh;
-      overflow-y: scroll;
-  }`
+  styles: [`
+      .cdk-global-overlay-wrapper, .cdk-overlay-container {
+          z-index: 99999 !important;
+      }
+
+      .modal-body {
+          max-height: 70vh;
+          overflow-y: scroll;
+      }`
   ],
   imports: [
     TranslateModule,
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    NgIf
+    NgIf,
+    MatSelectModule,
+    NgForOf,
+    JsonPipe
   ],
   standalone: true
 })
@@ -29,6 +38,8 @@ export class AddReservationModalComponent implements OnInit {
 
   tutorModel?: TutorModel;
   details = false;
+
+  days = Object.keys(DaysEnum);
 
   tutorForm = this.fb.group({
     firstname: ['', Validators.required],

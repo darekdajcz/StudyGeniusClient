@@ -1,20 +1,44 @@
-<h2>Moje rezerwacje</h2>
-<div class="row">
+<ng-container *ngIf="user.role === AuthRole.STUDENT ">
+    <h2>Moje rezerwacje</h2>
+    <div class="row">
 
-    <ng-container *ngFor="let reservation of reservations$ |async">
-        <div class="col-sm-6 mt-2">
-            <div class="widget-info">
+        <ng-container *ngFor="let reservation of reservations$ |async">
+            <div class="col-sm-6 mt-2">
+                <div class="widget-info">
 
-                <small>Data lekcji:</small>
-                <span>{{reservation.date}}</span>
+                    <small>Data lekcji:</small>
+                    <span>{{reservation.date}}</span>
 
-                <small>Godzina:</small>
-                <span>{{reservation.lessonHour}}</span>
+                    <small>Godzina:</small>
+                    <span>{{reservation.lessonHour}}</span>
 
-                <small>Gdzie:</small>
-                <span>{{reservation.place}}</span>
-                <mat-icon class="icon-copy">file_copy</mat-icon>
+                    <small>Gdzie:</small>
+                    <span>{{reservation.place}}</span>
+                    <mat-icon class="icon-copy">file_copy</mat-icon>
+                </div>
             </div>
-        </div>
-    </ng-container>
-</div>
+        </ng-container>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="user.role === AuthRole.TUTOR ">
+    <h2>Moje zajęcia</h2>
+    <div class="row">
+        <ng-container *ngFor="let reservation of reservations$ |async">
+            <div class="col-sm-6 mt-2">
+                <div class="widget-info">
+
+                    <small>Data lekcji:</small>
+                    <span>{{reservation.date}}</span>
+
+                    <small>Godzina:</small>
+                    <span>{{reservation.lessonHour}}</span>
+
+                    <small>Gdzie:</small>
+                    <span>{{reservation.place}}</span>
+                    <mat-icon class="icon-copy">file_copy</mat-icon>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>
