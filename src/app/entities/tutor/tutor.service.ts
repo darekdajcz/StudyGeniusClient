@@ -9,6 +9,9 @@ import { createRequestOption, Pagination } from '../../shared/util/request-util'
 import { AddTutorRequest } from './model/add-tutor-request';
 import { UpdateTutorRequest } from './model/update-tutor-request';
 import { TutorDetailModel, TutorModel } from './model/tutor.model';
+import { ReservationListResponse } from './model/reservation-response';
+import { AddReservationRequest } from './model/add-reservation-request';
+import { AddReservationResponse } from './model/add-reservation-response';
 
 export interface TutorCriteria {
   id?: number | null;
@@ -38,6 +41,20 @@ export class TutorService {
 
   getTutorById = (id: number): Observable<TutorDetailModel> => {
     return this.http.get<TutorDetailModel>(`${ this.resourceUrl }/${ id }`);
+  };
+
+  getReservations = (id: number): Observable<ReservationListResponse> => {
+    return this.http.get<ReservationListResponse>(`${ this.resourceUrl }/reservation/${ id }`);
+  };
+
+  getStudentReservations = (id: number): Observable<ReservationListResponse> => {
+    return this.http.get<ReservationListResponse>(
+      `${ this.resourceUrl }/reservation/student/${ id }`
+    );
+  };
+
+  addReservation = (req: AddReservationRequest): Observable<AddReservationResponse> => {
+    return this.http.post<AddReservationResponse>(`${ this.resourceUrl }/reservation`, req);
   };
 
   getTutorByUserId = (id: number): Observable<TutorModel> => {

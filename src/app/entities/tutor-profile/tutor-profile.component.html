@@ -1,4 +1,4 @@
-<div class="page background">
+<div class="page background" *ngIf="tutor">
     <div class="col-md-12 d-flex flex-md-row flex-sm-column gap-3">
         <div class="col-md-4 col-sm-12">
             <div id="profile-block" class=" mainFormText profile-white-block">
@@ -61,8 +61,8 @@
                     </div>
                 </div>
                 <div class="u-actions">
-                    <a href="https://edualy.com/pl/profil/3763?tab=harmonogram" class="btn btn-primary  btn-custom">
-                        <i class="c-icon c-icon-lesson-book"></i> Zamów lekcję </a>
+                    <button (click)="selectedIndex = 1" mat-raised-button color="primary">
+                        <fa-icon></fa-icon> Zamów lekcję </button>
                     <a href="tel:+48537370907" class="btn btn-bordered btn-custom"><i class="c-icon c-icon-phone"></i>
                         Zadzwoń</a>
                 </div>
@@ -70,10 +70,10 @@
         </div>
         <div class="col-md-7 col-sm-12">
             <div class="profile-block-content profile-section">
-                <mat-tab-group [selectedIndex]="1">
+                <mat-tab-group [(selectedIndex)]="selectedIndex">
                     <mat-tab label="Opis">
                         <div class="overflow-hidden">
-                            <h2>Mój profil</h2>
+                            <h2 class="mb-3">Mój profil</h2>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="widget-info">
@@ -93,22 +93,45 @@
                         </div>
                     </mat-tab>
                     <mat-tab label="Harmonogram">
+                        <div class="mt-3">
+                            Gdzie
+                        </div>
+                        <mat-button-toggle-group [(ngModel)]="place" name="fontStyle"
+                                                 aria-label="Font Style">
+                            <mat-button-toggle
+                                [disabled]="!tutor.place.includes(PlaceEnum.STUDENT_PLACE)"
+                                [value]="PlaceEnum.STUDENT_PLACE">
+                                Student Place
+                            </mat-button-toggle>
+                            <mat-button-toggle
+                                [disabled]="!tutor.place.includes(PlaceEnum.TUTOR_PLACE)"
+                                [value]="PlaceEnum.TUTOR_PLACE">
+                                Tutor Place
+                            </mat-button-toggle>
+                            <mat-button-toggle
+                                [disabled]="!tutor.place.includes(PlaceEnum.ONLINE)"
+                                [value]="PlaceEnum.ONLINE">
+                                Online
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
                         <div class="overflow-hidden d-flex">
                             <div>
-                                <h2>Harmonogram</h2>
-                                <mat-card class="demo-inline-calendar-card">
+                                <h2 class="mb-2">Harmonogram </h2>
+                                <mat-card class="demo-inline-calendar-card" *ngIf="initCaledar">
                                     <mat-calendar [(selected)]="selected"
-                                                  [dateClass]="hideWeekends"></mat-calendar>
+                                                  [minDate]="today"
+                                                  [dateFilter]="hideWeekends"></mat-calendar>
                                 </mat-card>
                             </div>
                             <div class="ms-4 mt-5 pt-5">
                                 <div>
                                     Ile potrzebujesz czasu?
                                 </div>
-                                <mat-button-toggle-group value="bold" name="fontStyle" aria-label="Font Style">
-                                    <mat-button-toggle value="bold">45 min</mat-button-toggle>
-                                    <mat-button-toggle value="italic">60 min</mat-button-toggle>
-                                    <mat-button-toggle value="underline">90 min</mat-button-toggle>
+                                <mat-button-toggle-group [(ngModel)]="lessonTime" name="fontStyle"
+                                                         aria-label="Font Style">
+                                    <mat-button-toggle [value]="1">30 min</mat-button-toggle>
+                                    <mat-button-toggle [value]="2">60 min</mat-button-toggle>
+                                    <mat-button-toggle [value]="3">90 min</mat-button-toggle>
                                 </mat-button-toggle-group>
 
                                 <div class="mt-3">
@@ -116,13 +139,17 @@
                                 </div>
                                 <mat-form-field>
                                     <mat-label>Wybierz godziny</mat-label>
-                                    <mat-select>
-                                        <mat-option *ngFor="let hour of hoursAvailable" [value]="hour">
+                                    <mat-select [(ngModel)]="lessonHour">
+                                        <mat-option *ngFor="let hour of hoursAvailable"
+                                                    [value]="hour"
+                                                    [disabled]="isDisabled(hour)">
                                             {{hour}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <button mat-raised-button color="primary">
+                                <button mat-raised-button color="primary"
+                                        [disabled]="!lessonHour || !lessonTime"
+                                (click)="addReservation()">
                                     Zarezerwuj
                                 </button>
                             </div>

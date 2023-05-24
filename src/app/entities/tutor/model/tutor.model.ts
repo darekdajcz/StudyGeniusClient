@@ -2,6 +2,7 @@ import { DaysEnum } from './days.enum';
 
 export interface TutorModel {
   id?: number;
+  userId: number;
   firstname: string;
   lastname: string;
   email: string;

@@ -15,6 +15,10 @@ export const accountProfileRoute: Routes = [
         path: 'add-announcement',
         loadComponent: () => import('./components/active-announcements/active-announcement.component')
           .then(module => module.ActiveAnnouncementComponent)
+      }, {
+        path: 'student-lessons',
+        loadComponent: () => import('./components/student-lessons/student-lessons.component')
+          .then(module => module.StudentLessonsComponent)
       }
     ]
   }

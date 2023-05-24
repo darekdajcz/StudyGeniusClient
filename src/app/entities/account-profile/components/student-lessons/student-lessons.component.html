@@ -1,0 +1,20 @@
+<h2>Moje rezerwacje</h2>
+<div class="row">
+
+    <ng-container *ngFor="let reservation of reservations$ |async">
+        <div class="col-sm-6 mt-2">
+            <div class="widget-info">
+
+                <small>Data lekcji:</small>
+                <span>{{reservation.date}}</span>
+
+                <small>Godzina:</small>
+                <span>{{reservation.lessonHour}}</span>
+
+                <small>Gdzie:</small>
+                <span>{{reservation.place}}</span>
+                <mat-icon class="icon-copy">file_copy</mat-icon>
+            </div>
+        </div>
+    </ng-container>
+</div>

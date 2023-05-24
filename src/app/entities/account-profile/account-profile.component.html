@@ -23,7 +23,7 @@
                         Mój profil
                     </li>
 
-                    <li routerLink="/account-profile/add-announcement">
+                    <li *ngIf="user.role === AuthRole.TUTOR" routerLink="/account-profile/add-announcement">
                         <mat-icon class="mt-2">info</mat-icon>
                         Dodaj ogłoszenie
                     </li>
@@ -32,7 +32,7 @@
                         <mat-icon>info</mat-icon>
                         Konwersacje
                     </li>
-                    <li>
+                    <li *ngIf="user.role === AuthRole.STUDENT" routerLink="/account-profile/student-lessons">
                         <mat-icon>info</mat-icon>
                         Lekcje
                     </li>
@@ -47,10 +47,11 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-7">
-            <div class="profile-block-content profile-section">
-                <router-outlet></router-outlet>
+        <div class=" col-md-7
+                    ">
+                    <div class="profile-block-content profile-section">
+                        <router-outlet></router-outlet>
+                    </div>
             </div>
         </div>
     </div>
-</div>

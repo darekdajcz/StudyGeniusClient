@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf, WeekDay } from '@angular/common';
 import { DaysEnum } from '../../../tutor/model/days.enum';
+import { TokenStorageService } from '../../../../shared/services/token-storage.service';
 
 @Component({
   templateUrl: './add-reservation-modal.component.html',
@@ -43,7 +44,8 @@ export class AddReservationModalComponent implements OnInit {
     hoursAvailable: [[''], Validators.required]
   });
 
-  constructor(private readonly activeModal: NgbActiveModal, private readonly fb: NonNullableFormBuilder) {
+  constructor(private readonly activeModal: NgbActiveModal, private readonly fb: NonNullableFormBuilder,
+    private readonly tokenService: TokenStorageService) {
   }
 
   static open(ngbModal: NgbModal, tutorModel?: TutorModel, details?: boolean): NgbModalRef {
@@ -128,6 +130,7 @@ export class AddReservationModalComponent implements OnInit {
     const tutor = {
       ...this.tutorForm.getRawValue(),
       id: this.tutorModel?.id,
+      userId: this.tokenService.getUser().id,
       badges: [BadgesEnum.APPROVED],
       place: [PlaceEnum.STUDENT_PLACE],
       reservations: []
