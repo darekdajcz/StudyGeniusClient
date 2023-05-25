@@ -3,99 +3,118 @@
     <button class="btn-close" type="button" (click)="onDismiss()"></button>
 </div>
 <div class="modal-body pb-0">
-    <form class="pt-2 ps-5 pe-5">
-        <div class="login-container">
-            <form class="d-flex flex-column align-items-center mb-4" [formGroup]="tutorForm">
+    <form [formGroup]="tutorForm" class="pt-2 ps-5 pe-5 d-flex">
+        <div class="col-6">
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.firstname' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="firstname">
-                    <mat-error *ngIf="firstnameControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+            <div class="login-container">
+                <form class="d-flex flex-column align-items-center mb-4">
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.lastname' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="lastname">
-                    <mat-error *ngIf="lastnameControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{'tutor.firstname' | translate}}</mat-label>
+                        <input autofocus type="text" matInput formControlName="firstname">
+                        <mat-error *ngIf="firstnameControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.email' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="email">
-                    <mat-error *ngIf="emailControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{'tutor.lastname' | translate}}</mat-label>
+                        <input autofocus type="text" matInput formControlName="lastname">
+                        <mat-error *ngIf="lastnameControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.subject' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="subject">
-                    <mat-error *ngIf="subjectControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{'tutor.email' | translate}}</mat-label>
+                        <input autofocus type="text" matInput formControlName="email">
+                        <mat-error *ngIf="emailControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.description' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="description">
-                    <mat-error *ngIf="descriptionControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{'tutor.subject' | translate}}</mat-label>
+                        <mat-select formControlName="subject" appendTo="body">
+                            <mat-option *ngFor="let subject of subjects" appendTo="body"
+                                        [value]="subject">
+                                {{subject}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.price' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="price">
-                    <mat-error *ngIf="priceControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{'tutor.price' | translate}}</mat-label>
+                        <input autofocus type="text" matInput formControlName="price">
+                        <mat-error *ngIf="priceControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.place' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="place">
-                    <mat-error *ngIf="placeControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{'tutor.place' | translate}}</mat-label>
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.phoneNumber' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="phoneNumber">
-                    <mat-error *ngIf="phoneNumberControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+                        <mat-select multiple formControlName="place" appendTo="body">
+                            <mat-option *ngFor="let place of places"
+                                        [value]="place">
+                                {{place}}
+                            </mat-option>
+                        </mat-select>
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.badges' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="badges">
-                    <mat-error *ngIf="badgesControl.hasError('required')">
-                        {{'form.required' | translate}}
-                    </mat-error>
-                </mat-form-field>
+                        <mat-error *ngIf="placeControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
 
-                {{days | json}}
-                <mat-form-field>
-                    <mat-label>{{'tutor.daysAvailable' | translate}}</mat-label>
+                    <mat-form-field>
+                        <mat-label>{{'tutor.phoneNumber' | translate}}</mat-label>
+                        <input autofocus type="text" matInput formControlName="phoneNumber">
+                        <mat-error *ngIf="phoneNumberControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>{{'tutor.badges' | translate}}</mat-label>
+                        <input autofocus type="text" matInput formControlName="badges">
+                        <mat-error *ngIf="badgesControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>{{'tutor.daysAvailable' | translate}}</mat-label>
                         <mat-select formControlName="daysAvailable" multiple appendTo="body">
-                            <mat-option *ngFor="let day of days"  appendTo="body"
+                            <mat-option *ngFor="let day of days" appendTo="body"
                                         [value]="day">
                                 {{day}}
                             </mat-option>
                         </mat-select>
-                </mat-form-field>
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>{{'tutor.hoursAvailable' | translate}}</mat-label>
-                    <input autofocus type="text" matInput formControlName="hoursAvailable">
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{'tutor.hoursAvailable' | translate}}</mat-label>
+                        <mat-select formControlName="hoursAvailable" multiple appendTo="body">
+                            <mat-option *ngFor="let hour of hours"
+                                        [value]="hour">
+                                {{hour}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
 
-            </form>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-6 ps-5">
+            <mat-form-field>
+                <mat-label>{{'tutor.description' | translate}}</mat-label>
+                <textarea matInput formControlName="description" rows="10"></textarea>
+                <mat-error *ngIf="descriptionControl.hasError('required')">
+                    {{'form.required' | translate}}
+                </mat-error>
+            </mat-form-field>
+
         </div>
     </form>
 </div>

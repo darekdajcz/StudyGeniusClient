@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {SERVER_API_URL} from '../../app.constants';
-import {Observable, of, switchMap} from 'rxjs';
-import {LoginResponse} from '../../entities/login/components/models/login.response';
-import {sha256} from 'js-sha256';
-import {AuthRequest} from "../../entities/login/components/models/auth-request.model";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { SERVER_API_URL } from '../../app.constants';
+import { Observable, of, switchMap } from 'rxjs';
+import { LoginResponse } from '../../entities/login/components/models/login.response';
+import { sha256 } from 'js-sha256';
+import { AuthRequest } from '../../entities/login/components/models/auth-request.model';
 import { RegisterRequest } from '../../entities/login/components/models/register-request';
 
 export interface UserModel {
@@ -26,24 +26,18 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private resourceUrl = `${SERVER_API_URL}/api/auth`;
+  private resourceUrl = `${ SERVER_API_URL }/api/auth`;
 
   constructor(private readonly http: HttpClient) {
   }
 
-  logout(): Observable<any> {
-    return this.http.post<any>(`${this.resourceUrl}/logout`, {});
-  }
+  logout = (): Observable<any> =>
+    this.http.post<any>(`${ this.resourceUrl }/logout`, {});
 
-  logIn = (authRequest: AuthRequest): Observable<AuthResponse> => {
-    const req = {
-      email: "darek.dajcz@gmail.com",
-      password: "Uzi2115"
-    };
-    return this.http.post<any>(`${this.resourceUrl}/authenticate`, authRequest);
-  }
+  logIn = (authRequest: AuthRequest): Observable<AuthResponse> =>
+    this.http.post<any>(`${ this.resourceUrl }/authenticate`, authRequest);
 
-  register = (authRequest: RegisterRequest): Observable<AuthResponse> => {
-    return this.http.post<any>(`${this.resourceUrl}/register`, authRequest);
-  }
+  register = (authRequest: RegisterRequest): Observable<AuthResponse> =>
+    this.http.post<any>(`${ this.resourceUrl }/register`, authRequest);
+
 }

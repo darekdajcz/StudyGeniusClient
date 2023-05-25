@@ -1,4 +1,5 @@
 import { DaysEnum } from './days.enum';
+import { SubjectEnum } from './subject.enum';
 
 export interface TutorModel {
   id?: number;
@@ -6,7 +7,7 @@ export interface TutorModel {
   firstname: string;
   lastname: string;
   email: string;
-  subject: string;
+  subject: SubjectEnum;
   description: string;
   place: PlaceEnum[];
   phoneNumber: string;
@@ -14,7 +15,7 @@ export interface TutorModel {
   reservations: Reservation[];
   price: number | null;
   daysAvailable: DaysEnum[],
-  hoursAvailable: string[]
+  hoursAvailable: string
 }
 
 export interface TutorDetailModel {

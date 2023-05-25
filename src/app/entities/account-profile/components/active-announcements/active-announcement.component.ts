@@ -58,12 +58,14 @@ export class ActiveAnnouncementComponent implements OnInit {
   }
 
   private saveAnnouncement(req: TutorModel): void {
-    let observable: Observable<UpdateTutorResponse> = req?.id
+    this.tutor = req;
+    let observable: Observable<UpdateTutorResponse> = !!req.id || req?.id === 0
       ? this.tutorService.updateTutor(req)
       : this.tutorService.createReservation(req);
 
     observable
       .pipe(filter((res) => res.success))
       .subscribe({ next: () => 'this.loadAll()' });
+    this.cdRef.detectChanges();
   }
 }

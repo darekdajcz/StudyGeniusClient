@@ -62,15 +62,8 @@ export class RegisterComponent {
           next: (res) => {
             if (res.access_token) {
 
-              const user = {
-                firstname: this.firstnameControl.value,
-                lastname: this.lastnameControl.value,
-                email: this.emailControl.value,
-                role: this.roleControl.value
-              } as UserModel;
-
               this.tokenStorageService.saveToken(res.access_token!);
-              this.tokenStorageService.saveUser(user);
+              this.tokenStorageService.saveUser(res.user);
               this.router.navigate(['/']).then(() => LoginComponent.reloadPage());
             }
           }

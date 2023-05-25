@@ -9,14 +9,12 @@ import { JsonPipe, NgForOf, NgIf, WeekDay } from '@angular/common';
 import { DaysEnum } from '../../../tutor/model/days.enum';
 import { TokenStorageService } from '../../../../shared/services/token-storage.service';
 import { MatSelectModule } from '@angular/material/select';
+import { SubjectEnum } from '../../../tutor/model/subject.enum';
+import { HoursEnum } from '../../../tutor/model/hours.enum';
 
 @Component({
   templateUrl: './add-reservation-modal.component.html',
   styles: [`
-      .cdk-global-overlay-wrapper, .cdk-overlay-container {
-          z-index: 99999 !important;
-      }
-
       .modal-body {
           max-height: 70vh;
           overflow-y: scroll;
@@ -40,12 +38,15 @@ export class AddReservationModalComponent implements OnInit {
   details = false;
 
   days = Object.keys(DaysEnum);
+  hours = Object.keys(HoursEnum);
+  places = Object.keys(PlaceEnum);
+  subjects = Object.keys(SubjectEnum);
 
   tutorForm = this.fb.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
     email: ['', Validators.required],
-    subject: ['', Validators.required],
+    subject: [SubjectEnum.ART, Validators.required],
     description: ['', Validators.required],
     place: [[PlaceEnum.TUTOR_PLACE], Validators.required],
     phoneNumber: ['', Validators.required],
@@ -61,11 +62,14 @@ export class AddReservationModalComponent implements OnInit {
 
   static open(ngbModal: NgbModal, tutorModel?: TutorModel, details?: boolean): NgbModalRef {
     const modal = ngbModal.open(AddReservationModalComponent, {
+      size: 'xl',
       centered: true
     });
 
     modal.componentInstance.tutorModel = tutorModel;
     modal.componentInstance.details = details;
+
+    console.log(tutorModel);
 
     return modal;
   }
@@ -82,8 +86,8 @@ export class AddReservationModalComponent implements OnInit {
     return this.tutorForm.controls.email as FormControl<string>;
   }
 
-  get subjectControl(): FormControl<string> {
-    return this.tutorForm.controls.subject as FormControl<string>;
+  get subjectControl(): FormControl<SubjectEnum> {
+    return this.tutorForm.controls.subject as FormControl<SubjectEnum>;
   }
 
   get descriptionControl(): FormControl<string> {
@@ -106,6 +110,10 @@ export class AddReservationModalComponent implements OnInit {
     return this.tutorForm.controls.price as FormControl<number | null>;
   }
 
+  get hoursAvailableControl(): FormControl<string[] | null> {
+    return this.tutorForm.controls.hoursAvailable as FormControl<string[] | null>;
+  }
+
   ngOnInit(): void {
     this.initForm();
   }
@@ -115,6 +123,10 @@ export class AddReservationModalComponent implements OnInit {
   }
 
   private initForm(): void {
+
+    const withoutBrackets = this.tutorModel!.hoursAvailable.slice(1, -1) as string;
+    const hoursAvailable = withoutBrackets.split(', ');
+
     const { tutorModel } = this;
     if (this.tutorModel) {
       this.tutorForm.patchValue({
@@ -128,7 +140,7 @@ export class AddReservationModalComponent implements OnInit {
         phoneNumber: tutorModel!.phoneNumber || '',
         badges: tutorModel!.badges,
         daysAvailable: tutorModel!.daysAvailable,
-        hoursAvailable: ['']
+        hoursAvailable: hoursAvailable
       });
     }
 
@@ -138,13 +150,15 @@ export class AddReservationModalComponent implements OnInit {
   }
 
   saveTutor(): void {
+
+    const string = '[' + this.hoursAvailableControl.value!.map(item => `${item}`).join(', ') + ']';
+
     const tutor = {
       ...this.tutorForm.getRawValue(),
       id: this.tutorModel?.id,
       userId: this.tokenService.getUser().id,
       badges: [BadgesEnum.APPROVED],
-      place: [PlaceEnum.STUDENT_PLACE],
-      reservations: []
+      hoursAvailable: string
     } as TutorModel;
 
     this.activeModal.close({ tutor });
