@@ -23,7 +23,7 @@ import { map, share, Subscription, timer } from 'rxjs';
 export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild(BaseChartDirective) barChart: BaseChartDirective;
   user: UserModel;
-  barLoaded = false;
+  loaded = false;
   @Input() showClock = false;
   actualDateTime = new Date();
   idInterval: any;
@@ -44,18 +44,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.hours = actualDateTime.getHours();
       this.minutes = actualDateTime.getMinutes();
       this.seconds = actualDateTime.getSeconds();
+      this.loaded = true;
       this.cdRef.detectChanges();
     }, 1000);
   }
 
   ngOnDestroy(): void {
-    console.log('Clock Component is detroy');
     if (this.idInterval) {
       clearInterval(this.idInterval);
     }
   }
 
   toggleOpen(): void {
-    this.barLoaded = !this.barLoaded;
+    this.loaded = !this.loaded;
   }
 }

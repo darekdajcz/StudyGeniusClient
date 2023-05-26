@@ -14,6 +14,7 @@ export interface UserModel {
   email: string;
   password: string;
   role: string;
+  createDate: string;
 }
 
 export interface AuthResponse {

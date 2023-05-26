@@ -1,5 +1,5 @@
 <div class="page background">
-    <h1 class="mb-4">{{'tutor.header' | translate}}</h1>
+    <h1 class="tutor-header">{{'tutor.header' | translate}}</h1>
     <button *ngIf="canEdit()" class="mb-2" mat-raised-button color="primary"
             (click)="updateTutor()">
         {{'tutor.add-tutor' | translate}}
@@ -29,7 +29,7 @@
 
             <ng-container *ngIf="!!tutors.length; else emptyTable">
                 <ng-container *ngFor="let tutor of tutors">
-                    <div class="card mb-4">
+                    <div class="card mb-4 basic-container">
                         <div class="card-body d-flex">
                             <div class="left-column">
                                 <div class="head-info">

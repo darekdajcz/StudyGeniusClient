@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 import { AccountProfileComponent } from './account-profile.component';
+import {
+  MyTutorsFromReservationComponent
+} from './components/my-tutors-from-reservation/my-tutors-from-reservation.component';
 
 export const accountProfileRoute: Routes = [
   {
@@ -19,6 +22,10 @@ export const accountProfileRoute: Routes = [
         path: 'student-lessons',
         loadComponent: () => import('./components/student-lessons/student-lessons.component')
           .then(module => module.StudentLessonsComponent)
+      }, {
+        path: 'my-tutors',
+        loadComponent: () => import('./components/my-tutors-from-reservation/my-tutors-from-reservation.component')
+          .then(module => module.MyTutorsFromReservationComponent)
       }
     ]
   }

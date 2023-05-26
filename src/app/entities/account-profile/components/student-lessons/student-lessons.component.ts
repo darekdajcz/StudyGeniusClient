@@ -54,6 +54,5 @@ export class StudentLessonsComponent implements OnInit {
               .getReservations(res.id!)
               .pipe(map((res) => res.reservations)))
         );
-
   }
 }

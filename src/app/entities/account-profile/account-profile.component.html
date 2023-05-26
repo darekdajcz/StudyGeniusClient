@@ -1,7 +1,7 @@
 <div class="page background">
     <div class="d-flex col-md-12 gap-5">
         <div class="col-md-4">
-            <div class="profile-section mb-5">
+            <div class="profile-section basic-container mb-5">
                 <div class="u-common-info">
                     <div class="team-image" id="profile-image-wrap">
                         <div></div>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <div class="profile-section">
+            <div class="profile-section basic-container">
                 <ul>
                     <li routerLink="/account-profile">
                         <mat-icon class="mt-2">info</mat-icon>
@@ -33,7 +33,8 @@
                         Konwersacje
                     </li>
 
-                    <li *ngIf="user.role === AuthRole.STUDENT || user.role === AuthRole.TUTOR" routerLink="/account-profile/student-lessons">
+                    <li *ngIf="user.role === AuthRole.STUDENT || user.role === AuthRole.TUTOR"
+                        routerLink="/account-profile/student-lessons">
                         <mat-icon>info</mat-icon>
                         Lekcje
                     </li>
@@ -41,18 +42,17 @@
                         <mat-icon>info</mat-icon>
                         Mój pakiet
                     </li>
-                    <li>
+                    <li *ngIf="user.role === AuthRole.STUDENT" routerLink="/account-profile/my-tutors">
                         <mat-icon>info</mat-icon>
                         Moi korepetytorzy
                     </li>
                 </ul>
             </div>
         </div>
-        <div class=" col-md-7
-                    ">
-                    <div class="profile-block-content profile-section">
-                        <router-outlet></router-outlet>
-                    </div>
+        <div class="col-md-7">
+            <div class="profile-block-content profile-section basic-container">
+                <router-outlet></router-outlet>
             </div>
         </div>
     </div>
+</div>
