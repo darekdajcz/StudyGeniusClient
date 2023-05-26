@@ -8,19 +8,22 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SortDirective } from './directives/sort.directive';
 import { SortByDirective } from './directives/sort-by.directive';
 import { CurrencyPipe } from './pipes/currency.pipe';
+import { HasAuthorityDirective } from './directives/has-authority.directive';
 
 @NgModule({
   declarations: [
     CurrencyPipe,
     AlertMessagesComponent,
     SortDirective,
-    SortByDirective
+    SortByDirective,
+    HasAuthorityDirective
   ],
   exports: [
     CurrencyPipe,
     AlertMessagesComponent,
     SortDirective,
-    SortByDirective
+    SortByDirective,
+    HasAuthorityDirective
   ],
   imports: [
     CommonModule,

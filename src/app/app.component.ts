@@ -5,6 +5,7 @@ import {TokenStorageService} from './shared/services/token-storage.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthService} from './shared/services/auth.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
+import { AuthRole } from './entities/login/components/models/auth-role';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
   isLoggedIn = false;
   private opened = false;
+  protected readonly AuthRole = AuthRole;
 
   constructor(private readonly router: Router, private readonly cdRef: ChangeDetectorRef,
               private readonly tokenStorageService: TokenStorageService, private readonly translateService: TranslateService,
