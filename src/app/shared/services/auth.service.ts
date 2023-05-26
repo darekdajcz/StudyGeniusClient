@@ -41,4 +41,6 @@ export class AuthService {
   register = (authRequest: RegisterRequest): Observable<AuthResponse> =>
     this.http.post<any>(`${ this.resourceUrl }/register`, authRequest);
 
+  forApprove = (): Observable<any> =>
+    this.http.get<any>(`${ this.resourceUrl }/for-approve`);
 }
