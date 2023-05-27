@@ -11,7 +11,8 @@
             <mat-icon class="icon-copy">file_copy</mat-icon>
             <div>
                 {{'my-profile.subject' | translate}}
-                {{tutor.subject}}</div>
+                {{'tutor.subject.' + tutor.subject | translate}}
+            </div>
             <div>
                 {{'my-profile.price' | translate}}
                 {{tutor.price}}</div>

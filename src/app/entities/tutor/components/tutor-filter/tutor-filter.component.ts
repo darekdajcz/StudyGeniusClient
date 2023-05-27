@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { slideInAnimation } from '../../../../animations';
 import { FormGroup } from '@angular/forms';
+import { SubjectEnum } from '../../model/subject.enum';
 
 @Component({
   selector: 'app-tutor-filter',
@@ -10,6 +11,7 @@ import { FormGroup } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TutorFilterComponent {
+  subjects = Object.keys(SubjectEnum);
 
   @Input() tutorSearchForm!: FormGroup;
   @Input() showSearchBox = false;

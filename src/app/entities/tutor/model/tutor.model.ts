@@ -27,7 +27,7 @@ export interface TutorDetailModel {
   firstname: string;
   lastname: string;
   email: string;
-  subject: string;
+  subject: SubjectEnum;
   description: string;
   place: PlaceEnum[];
   phoneNumber: string;

@@ -22,9 +22,15 @@
     </div>
 
     <div class="d-flex me-2">
+
       <mat-form-field>
         <mat-label>{{'tutor.subject' | translate}}</mat-label>
-        <input matInput type="text" name="subject" formControlName="subject">
+        <mat-select formControlName="subject" appendTo="body">
+          <mat-option *ngFor="let subject of subjects" appendTo="body"
+                      [value]="subject">
+            {{subject}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 

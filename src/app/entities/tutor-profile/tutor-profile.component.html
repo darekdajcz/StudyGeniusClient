@@ -202,10 +202,10 @@
                                         <small>
                                             {{'tutor.subject' | translate}}:
                                         </small>
-                                        <span><strong>{{tutor.subject}}</strong></span>
+                                        <span><strong>{{'tutor.subject.' + tutor.subject | translate}}</strong></span>
 
                                         <small class="mt-2">
-                                            {{'tutor.tutor-place' | translate}}:
+                                            {{'tutor.lessons-place' | translate}}:
                                         </small>
                                         <ng-container *ngIf="!tutor.street; else noAddress">
                                             <span>
@@ -215,7 +215,9 @@
                                         </ng-container>
                                         <ng-template #noAddress>
                                               <span>
-                                                <strong>Nauczyciel nie prowadzi lekcji u siebie</strong>
+                                                <strong>
+                                                    {{'tutor.no-tutor-place' | translate}}
+                                                 </strong>
                                             </span>
                                         </ng-template>
                                     </div>

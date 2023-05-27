@@ -34,7 +34,9 @@
                                     <div class="tutor-image me-3"></div>
                                     <div class="status-container">{{tutor.firstname}} {{tutor.lastname}}</div>
                                 </div>
-                                <div class="subjects-row">{{tutor.subject}}</div>
+                                <div class="subjects-row">
+                                    {{'tutor.subject.' + tutor.subject | translate}}
+                                </div>
                                 <div class="tutor-desc">{{tutor.description}}</div>
                             </div>
                             <div class="right-column">
@@ -56,14 +58,15 @@
         <ul class="pagination mt-2 d-flex justify-content-end gap-2">
             <button mat-raised-button [disabled]="page <= 0" (click)="previousPage()"><
                 {{'tutor.previous' | translate}}
-                </button>
+            </button>
             <button mat-raised-button color="primary">{{page}}</button>
             <button class="d-lg-inline d-none" mat-raised-button [disabled]="isNextPageDisabled()"
                     (click)="nextPage()">{{page + 1}}</button>
             <button class="d-lg-inline d-none" mat-raised-button [disabled]="isNextPageDisabled()"
                     (click)="nextPage(2)">{{page + 2}}</button>
             <button mat-raised-button [disabled]="isNextPageDisabled()" (click)="nextPage()">
-                {{'tutor.next' | translate}} ></button>
+                {{'tutor.next' | translate}} >
+            </button>
         </ul>
     </nav>
 </div>
