@@ -1,5 +1,7 @@
 <ng-container *ngIf="user.role === AuthRole.STUDENT  && tutors">
-    <h2>Moje korepetytorzy</h2>
+    <h2>
+        {{"my-profile.my-tutors" | translate}}
+    </h2>
     <div class="row">
 
         <ng-container *ngFor="let tutor of tutors">
@@ -7,17 +9,23 @@
                 <div class="widget-info d-flex flex-column">
 
                     <div>
-                        <small>Imie i nazwisko korepetytora:</small>
+                        <small>
+                            {{"my-profile.tutor-name" | translate}}
+                        </small>
                         <span>{{tutor.firstname}} {{tutor.lastname}}</span>
                     </div>
 
                     <div>
-                        <small>Adress:</small>
+                        <small>
+                            {{"my-profile.address" | translate}}
+                        </small>
                         <span>{{tutor.subject}}</span>
                     </div>
 
                     <div>
-                        <small>Numer telefonu:</small>
+                        <small>
+                            {{"my-profile.phone-number" | translate}}
+                        </small>
                         <span>{{tutor.phoneNumber}}</span>
                         <mat-icon class="icon-copy">file_copy</mat-icon>
                     </div>

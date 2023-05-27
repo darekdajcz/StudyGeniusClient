@@ -101,7 +101,6 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-
                 </form>
             </div>
         </div>
@@ -115,6 +114,38 @@
                 </mat-error>
             </mat-form-field>
 
+
+            <mat-form-field>
+                <mat-label>{{'tutor.postalCode' | translate}}</mat-label>
+                <input autofocus type="text" matInput formControlName="postalCode">
+<!--                <mat-error *ngIf="badgesControl.hasError('required')">-->
+<!--                    {{'form.required' | translate}}-->
+<!--                </mat-error>-->
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>{{'tutor.city' | translate}}</mat-label>
+                <input autofocus type="text" matInput formControlName="city">
+<!--                <mat-error *ngIf="badgesControl.hasError('required')">-->
+<!--                    {{'form.required' | translate}}-->
+<!--                </mat-error>-->
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>{{'tutor.street' | translate}}</mat-label>
+                <input autofocus type="text" matInput formControlName="street">
+<!--                <mat-error *ngIf="badgesControl.hasError('required')">-->
+<!--                    {{'form.required' | translate}}-->
+<!--                </mat-error>-->
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>{{'tutor.houseNumber' | translate}}</mat-label>
+                <input autofocus type="text" matInput formControlName="houseNumber">
+<!--                <mat-error *ngIf="badgesControl.hasError('required')">-->
+<!--                    {{'form.required' | translate}}-->
+<!--                </mat-error>-->
+            </mat-form-field>
         </div>
     </form>
 </div>

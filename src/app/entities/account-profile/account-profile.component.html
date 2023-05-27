@@ -8,8 +8,8 @@
                         <i></i>
                     </div>
                     <div class="u-initials">
-                        <h3>{{user.firstname}} {{user.lastname}}  {{user.id}}</h3>
-                        <span class="u-role-name">{{user.role}}</span>
+                        <h3>{{user.firstname}} {{user.lastname}}</h3>
+                        <span class="u-role-name">{{'user-role.' + user.role | translate}}</span>
                     </div>
                     <div class="dropdown-profile">
                         <mat-icon>info</mat-icon>
@@ -20,31 +20,27 @@
                 <ul>
                     <li routerLink="/account-profile">
                         <mat-icon class="mt-2">info</mat-icon>
-                        Mój profil
+                        {{"my-profile.header" | translate}}
                     </li>
 
                     <li *ngIf="user.role === AuthRole.TUTOR" routerLink="/account-profile/add-announcement">
                         <mat-icon class="mt-2">info</mat-icon>
-                        Dodaj ogłoszenie
+                        {{"my-profile.add-announcement" | translate}}
                     </li>
 
                     <li>
                         <mat-icon>info</mat-icon>
-                        Konwersacje
+                        {{"my-profile.messages" | translate}}
                     </li>
 
                     <li *ngIf="user.role === AuthRole.STUDENT || user.role === AuthRole.TUTOR"
                         routerLink="/account-profile/student-lessons">
                         <mat-icon>info</mat-icon>
-                        Lekcje
-                    </li>
-                    <li>
-                        <mat-icon>info</mat-icon>
-                        Mój pakiet
+                        {{"my-profile.lessons" | translate}}
                     </li>
                     <li *ngIf="user.role === AuthRole.STUDENT" routerLink="/account-profile/my-tutors">
                         <mat-icon>info</mat-icon>
-                        Moi korepetytorzy
+                        {{"my-profile.my-tutors" | translate}}
                     </li>
                 </ul>
             </div>

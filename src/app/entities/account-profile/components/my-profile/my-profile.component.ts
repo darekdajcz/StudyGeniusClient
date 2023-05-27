@@ -5,6 +5,7 @@ import { TutorService } from '../../../tutor/tutor.service';
 import { TutorModel } from '../../../tutor/model/tutor.model';
 import { UserModel } from '../../../../shared/services/auth.service';
 import { TokenStorageService } from '../../../../shared/services/token-storage.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-tutor-profile',
@@ -12,7 +13,8 @@ import { TokenStorageService } from '../../../../shared/services/token-storage.s
   styleUrls: ['./my-profile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatIconModule
+    MatIconModule,
+    TranslateModule
   ],
   standalone: true
 })

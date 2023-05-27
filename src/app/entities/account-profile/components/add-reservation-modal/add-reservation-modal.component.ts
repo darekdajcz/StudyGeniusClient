@@ -53,7 +53,11 @@ export class AddReservationModalComponent implements OnInit {
     badges: [[BadgesEnum.STAR], Validators.required],
     price: [0, Validators.required],
     daysAvailable: [[DaysEnum.MONDAY], Validators.required],
-    hoursAvailable: [[''], Validators.required]
+    hoursAvailable: [[''], Validators.required],
+    postalCode: ['', Validators.required],
+    city: ['', Validators.required],
+    street: ['', Validators.required],
+    houseNumber: ['', Validators.required],
   });
 
   constructor(private readonly activeModal: NgbActiveModal, private readonly fb: NonNullableFormBuilder,
@@ -140,7 +144,11 @@ export class AddReservationModalComponent implements OnInit {
         phoneNumber: tutorModel!.phoneNumber || '',
         badges: tutorModel!.badges,
         daysAvailable: tutorModel!.daysAvailable,
-        hoursAvailable: hoursAvailable
+        hoursAvailable: hoursAvailable,
+        postalCode: tutorModel!.postalCode,
+        city: tutorModel!.city,
+        street: tutorModel!.street,
+        houseNumber: tutorModel!.houseNumber
       });
     }
 

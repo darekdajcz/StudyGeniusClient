@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { TutorDetailModel } from '../../../tutor/model/tutor.model';
 import { NgForOf, NgIf } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-tutors-from-reservation',
@@ -20,7 +21,8 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     NgForOf,
     NgIf,
-    MatListModule
+    MatListModule,
+    TranslateModule
   ],
   standalone: true
 })

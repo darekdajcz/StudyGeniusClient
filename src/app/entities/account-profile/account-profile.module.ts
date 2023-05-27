@@ -4,6 +4,7 @@ import { AccountProfileComponent } from './account-profile.component';
 import { RouterModule } from '@angular/router';
 import { accountProfileRoute } from './account-profile.route';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     RouterModule.forChild(accountProfileRoute),
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    TranslateModule
   ]
 })
 export class AccountProfileModule {

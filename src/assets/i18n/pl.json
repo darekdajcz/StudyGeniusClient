@@ -37,11 +37,15 @@
   "section": {
     "home": "Strona Główna",
     "tutor-database": "Ogłoszenia",
-    "admin": "Ogłoszenia",
+    "admin": "Admin",
     "info": "Info",
-    "ngrx": "NgRx",
     "login": "Logowanie",
     "help": "Pomoc"
+  },
+  "user-role": {
+    "ADMIN": "Admin",
+    "TUTOR": "Nauczyciel",
+    "STUDENT": "Uczeń"
   },
   "home": {
     "hello": "WITAJ",
@@ -64,6 +68,25 @@
   "form": {
     "required": "Pole wymagane"
   },
+  "my-profile": {
+    "header": "Mój Profil",
+    "my-profile": "Mój Profil",
+    "add-announcement": "Dodaj ogłoszenie",
+    "messages": "Konwersacje",
+    "lessons": "Lekcje",
+    "my-tutors": "Moi Korepetytorzy",
+    "my-reservations": "Moje Rezerwacje",
+    "lessons-data": "Dane lekcji",
+    "hour": "Godzina:",
+    "where": "Gdzie:",
+    "my-lessons": "Moje zajęcia:",
+    "lesson-date": "Data lekcji:",
+    "tutor-name": "Imię i nazwisko korepetytora:",
+    "address": "Adres:",
+    "phone-number": "Telefon kontaktowy:",
+    "create-date": "Data dołączenia:",
+    "email": "E-mail:"
+  },
   "tutor": {
     "header": "Baza Naszych Nauczycieli",
     "add-tutor": "Dodaj Ogloszenie",
@@ -74,17 +97,14 @@
     "email": "E-mail",
     "subject": "Przedmiot",
     "description": "Opis",
-    "price": "Cena",
-    "MANUAL": "Manualna",
-    "AUTOMATIC": "Automatyczna",
-    "tutor_type": "Rozmiar auta",
-    "SMALL": "Coupe",
-    "MID": "Van",
-    "BUS": "Bus",
-    "name": "Nazwa Auta",
-    "price_per_day": "Cena za dobę",
-    "tenant_id": "Najemca",
-    "address": "Adres",
-    "details": "Szczegóły"
+    "place": "Miejsce spotkań",
+    "phoneNumber": "Numer telefonu",
+    "badges": "Certyfikaty",
+    "daysAvailable": "Dostepne dni",
+    "hoursAvailable": "Dostepne godziny",
+    "postalCode": "Kod pocztowy",
+    "city": "Miasto",
+    "street": "Ulica",
+    "houseNumber": "Numer domu"
   }
 }

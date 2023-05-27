@@ -14,8 +14,12 @@ export interface TutorModel {
   badges: BadgesEnum[];
   reservations: Reservation[];
   price: number | null;
-  daysAvailable: DaysEnum[],
-  hoursAvailable: string
+  daysAvailable: DaysEnum[];
+  hoursAvailable: string;
+  postalCode: string;
+  city: string;
+  street: string;
+  houseNumber: string;
 }
 
 export interface TutorDetailModel {

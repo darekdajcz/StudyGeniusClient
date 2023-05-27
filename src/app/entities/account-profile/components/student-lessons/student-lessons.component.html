@@ -1,18 +1,26 @@
 <ng-container *ngIf="user.role === AuthRole.STUDENT ">
-    <h2>Moje rezerwacje</h2>
+    <h2>
+        {{"my-profile.my-reservations" | translate}}
+    </h2>
     <div class="row">
 
         <ng-container *ngFor="let reservation of reservations$ |async">
             <div class="col-sm-6 mt-2">
                 <div class="widget-info basic-container">
 
-                    <small>Data lekcji:</small>
+                    <small>
+                        {{"my-profile.lessons-data" | translate}}
+                    </small>
                     <span>{{reservation.date}}</span>
 
-                    <small>Godzina:</small>
+                    <small>
+                        {{"my-profile.hour" | translate}}
+                    </small>
                     <span>{{reservation.lessonHour}}</span>
 
-                    <small>Gdzie:</small>
+                    <small>
+                        {{"my-profile.where" | translate}}
+                    </small>
                     <span>{{reservation.place}}</span>
                     <mat-icon class="icon-copy">file_copy</mat-icon>
                 </div>
@@ -22,19 +30,27 @@
 </ng-container>
 
 <ng-container *ngIf="user.role === AuthRole.TUTOR ">
-    <h2>Moje zajęcia</h2>
+    <h2>
+        {{"my-profile.my-lessons" | translate}}
+    </h2>
     <div class="row">
         <ng-container *ngFor="let reservation of reservations$ |async">
             <div class="col-sm-6 mt-2">
                 <div class="widget-info">
 
-                    <small>Data lekcji:</small>
+                    <small>
+                        {{"my-profile.lesson-date" | translate}}
+                    </small>
                     <span>{{reservation.date}}</span>
 
-                    <small>Godzina:</small>
+                    <small>
+                        {{"my-profile.hour" | translate}}
+                    </small>
                     <span>{{reservation.lessonHour}}</span>
 
-                    <small>Gdzie:</small>
+                    <small>
+                        {{"my-profile.where" | translate}}
+                    </small>
                     <span>{{reservation.place}}</span>
                     <mat-icon class="icon-copy">file_copy</mat-icon>
                 </div>

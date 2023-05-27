@@ -12,6 +12,7 @@ import { TokenStorageService } from '../../../../shared/services/token-storage.s
 import { AsyncPipe, JsonPipe, NgForOf, NgIf } from '@angular/common';
 import { Reservation, ReservationListResponse } from '../../../tutor/model/reservation-response';
 import { AuthRole } from '../../../login/components/models/auth-role';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-student-lessons',
@@ -23,7 +24,8 @@ import { AuthRole } from '../../../login/components/models/auth-role';
     NgIf,
     NgForOf,
     JsonPipe,
-    AsyncPipe
+    AsyncPipe,
+    TranslateModule
   ],
   standalone: true
 })
