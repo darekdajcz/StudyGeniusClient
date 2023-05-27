@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     TutorProfileComponent
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     MatSelectModule,
     MatButtonModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ]
 })
 export class TutorProfileModule { }

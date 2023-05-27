@@ -10,6 +10,8 @@ import { TutorService } from '../../../tutor/tutor.service';
 import { UserModel } from '../../../../shared/services/auth.service';
 import { TokenStorageService } from '../../../../shared/services/token-storage.service';
 import { NgIf } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-active-announcements',
@@ -19,7 +21,9 @@ import { NgIf } from '@angular/common';
   imports: [
     MatIconModule,
     MatButtonModule,
-    NgIf
+    NgIf,
+    MatFormFieldModule,
+    TranslateModule
   ],
   standalone: true
 })

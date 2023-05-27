@@ -10,7 +10,7 @@
   "success": "Czynność zakończona sukcesem.",
   "loading": "Ładowanie...",
   "no_results": "Brak wyników",
-  "chart_toggle": "Pokaż / Ukryj wykres dostępności marek samochodów",
+  "chart_toggle": "Pokaż / Ukryj datę i czas",
   "header": {
     "add": "Dodaj",
     "edit": "Edytuj"
@@ -51,6 +51,11 @@
   "home": {
     "hello": "WITAJ",
     "main-app": "NA STRONIE GŁÓWNEJ",
+    "hello-role": {
+      "ADMIN": "adminie",
+      "TUTOR": "korepetytorze",
+      "STUDENT": "kursancie"
+    },
     "role": "ROLA",
     "login": "Zaloguj się"
   },
@@ -63,6 +68,8 @@
     "register-header": "Zarejestruj konto",
     "sign-in": "ZAŁÓŻ KONTO",
     "username": "Nazwa",
+    "firstname": "Imię",
+    "lastname": "Nazwisko",
     "email": "Email",
     "password": "Hasło"
   },
@@ -86,19 +93,41 @@
     "address": "Adres:",
     "phone-number": "Telefon kontaktowy:",
     "create-date": "Data dołączenia:",
-    "email": "E-mail:"
+    "email": "E-mail:",
+    "announcement": "Ogłoszenia",
+    "active-announcement": "Aktywne ogłoszenie",
+    "subject": "Przedmiot: ",
+    "edit-announcement": "Edytuj ogłoszenie"
   },
   "tutor": {
     "header": "Baza Naszych Nauczycieli",
     "add-tutor": "Dodaj Ogloszenie",
     "to-tutor": "Nauczyciel",
+    "filters": "FILTRY",
+    "pricex": "Cena:",
+    "reserve": "Zarezerwuj zajęcia",
+    "tutor": "Nauczyciel: ",
+    "learn-place": "Miejsce nauczania: ",
+    "tutor-place": "U mnie",
+    "from": "Od",
+    "see-packages": "Zobacz nasze pakiety",
+    "reserve-lesson": "Zamów lekcje",
+    "call": "Zadzwoń",
+    "describe-and-contact": "Opis i dane kontaktowe",
+    "student-place": "U ucznia",
+    "online": "Online",
+    "previous": "Poprzednia",
+    "next": "Następna",
     "id": "Numer",
     "firstname": "Imie",
     "lastname": "Nazwisko",
     "email": "E-mail",
     "subject": "Przedmiot",
+    "tutor-place": "Miejsce Korepetycji",
     "description": "Opis",
+    "harmonogram": "Harmonogram",
     "place": "Miejsce spotkań",
+    "price": "Cena",
     "phoneNumber": "Numer telefonu",
     "badges": "Certyfikaty",
     "daysAvailable": "Dostepne dni",
@@ -106,6 +135,16 @@
     "postalCode": "Kod pocztowy",
     "city": "Miasto",
     "street": "Ulica",
-    "houseNumber": "Numer domu"
+    "houseNumber": "Numer domu",
+    "where": "Gdzie",
+    "how-much-time": "Ile potrzebujesz czasu?",
+    "hours-avaiable": "Dostępne godziny",
+    "chose-hours": "Wybierz godzine",
+    "contact-data": "Dane kontaktowe",
+    "contact": "Kontakt",
+    "sub-local": "Przedmioty i lokalizacja",
+    "TUTOR_PLACE": "U korepetytora",
+    "STUDENT_PLACE": "U studenta",
+    "ONLINE": "Online"
   }
 }

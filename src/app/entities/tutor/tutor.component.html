@@ -1,11 +1,13 @@
 <div class="page background">
-    <h1 class="tutor-header">{{'tutor.header' | translate}}</h1>
+    <h1 class="tutor-header">
+        {{'tutor.header' | translate}}
+    </h1>
     <div class="me-3 mb-4">
         <app-tutor-filter *ngIf="showSearchBox" [tutorSearchForm]="tutorSearchForm"
                           (close)="toggleSearchBox()" (reset)="reset()" (search)="search()"></app-tutor-filter>
         <button *ngIf="!showSearchBox" mat-raised-button (click)="toggleSearchBox()">
             <mat-icon>search</mat-icon>
-            FILTRY
+            {{'tutor.filters' | translate}}
         </button>
     </div>
     <div class="d-flex flex-column">
@@ -37,11 +39,11 @@
                             </div>
                             <div class="right-column">
                                 <div>
-                                    Cena:
+                                    {{'tutor.pricex' | translate}}
                                     <strong>{{tutor.price}} / 60 min </strong>
                                 </div>
                                 <button mat-raised-button color="primary" (click)="reservationSection(tutor.id)">
-                                    Zarezerwuj zajęcia
+                                    {{'tutor.reserve' | translate}}
                                 </button>
                             </div>
                         </div>
@@ -52,13 +54,16 @@
     </div>
     <nav>
         <ul class="pagination mt-2 d-flex justify-content-end gap-2">
-            <button mat-raised-button [disabled]="page <= 0" (click)="previousPage()">< Previous</button>
+            <button mat-raised-button [disabled]="page <= 0" (click)="previousPage()"><
+                {{'tutor.previous' | translate}}
+                </button>
             <button mat-raised-button color="primary">{{page}}</button>
             <button class="d-lg-inline d-none" mat-raised-button [disabled]="isNextPageDisabled()"
                     (click)="nextPage()">{{page + 1}}</button>
             <button class="d-lg-inline d-none" mat-raised-button [disabled]="isNextPageDisabled()"
                     (click)="nextPage(2)">{{page + 2}}</button>
-            <button mat-raised-button [disabled]="isNextPageDisabled()" (click)="nextPage()">Next ></button>
+            <button mat-raised-button [disabled]="isNextPageDisabled()" (click)="nextPage()">
+                {{'tutor.next' | translate}} ></button>
         </ul>
     </nav>
 </div>
