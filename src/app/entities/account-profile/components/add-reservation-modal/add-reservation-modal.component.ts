@@ -73,8 +73,6 @@ export class AddReservationModalComponent implements OnInit {
     modal.componentInstance.tutorModel = tutorModel;
     modal.componentInstance.details = details;
 
-    console.log(tutorModel);
-
     return modal;
   }
 

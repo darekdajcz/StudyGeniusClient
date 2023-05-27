@@ -85,8 +85,6 @@ export class TutorProfileComponent implements OnInit {
 
   hideWeekends = (date: Date) => {
 
-    console.log(this.tutor);
-
     const numbersX = this.tutor?.daysAvailable
       .map((days) => DaysNumber[days]);
 
@@ -116,7 +114,6 @@ export class TutorProfileComponent implements OnInit {
   isDisabled(hour: string) {
     let x = false;
     if (this.dateDisabled.has(this.formatDate(this.selected))) {
-      console.log(this.reservations)
       this.reservations.forEach((res) => {
         if (res.date === this.formatDate(this.selected) && hour === res.lessonHour) {
           x = true;

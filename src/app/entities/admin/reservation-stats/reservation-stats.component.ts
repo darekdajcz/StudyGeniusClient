@@ -71,7 +71,6 @@ export class ReservationStatsComponent implements OnInit {
     this.user = this.tokenStorageService.getUser();
     this.tutorService.getReservationStats()
       .pipe(finalize(() => {
-        console.log(this.reservationMap);
         this.barChartLabels = [...this.reservationMap.keys()];
         const dataX = [...this.reservationMap.values()];
         this.barChartData.push({

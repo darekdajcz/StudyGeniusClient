@@ -77,7 +77,6 @@ export class TutorService {
   };
 
   updateTutor = (req: TutorModel): Observable<UpdateTutorResponse> => {
-    alert(req)
     const updateRequest = { tutorDTO: req } as UpdateTutorRequest;
     return this.http.put<UpdateTutorResponse>(`${ this.resourceUrl }/${ req.id }`, updateRequest);
   };

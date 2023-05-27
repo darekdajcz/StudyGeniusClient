@@ -107,8 +107,6 @@ export class TutorComponent implements OnInit {
     }
 
     const tutorCriteria = { ...this.tutorSearchForm.value } as TutorCriteria;
-    console.log(this.tutorSearchForm.value);
-    console.log(tutorCriteria);
 
     const page = {
       limit: this.limit,

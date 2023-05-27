@@ -19,12 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   standalone: true
 })
-export class SortButtonComponent implements OnChanges{
+export class SortButtonComponent{
   @Input() predicate: string;
   @Input() ascending: boolean;
   @Input() sortButtonName: string;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
-  }
 }
