@@ -15,12 +15,14 @@ import { loginRoute } from './login.route';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgChartsModule } from 'ng2-charts';
 import { RegisterComponent } from './components/register/register.component';
+import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterAdminComponent
   ],
   imports: [
     RouterModule.forChild(loginRoute),

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SERVER_API_URL } from '../../app.constants';
-import { Observable, of, switchMap } from 'rxjs';
-import { LoginResponse } from '../../entities/login/components/models/login.response';
-import { sha256 } from 'js-sha256';
+import { Observable } from 'rxjs';
 import { AuthRequest } from '../../entities/login/components/models/auth-request.model';
 import { RegisterRequest } from '../../entities/login/components/models/register-request';
 

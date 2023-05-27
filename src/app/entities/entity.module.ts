@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../shared/guard/auth.guard';
 import { AdminGuard } from '../shared/guard/admin.guard';
+import { TutorStatsComponent } from './admin/tutor-stats/tutor-stats.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,17 @@ import { AdminGuard } from '../shared/guard/admin.guard';
         path: 'admin',
         loadComponent: () => import('./admin/admin.component')
           .then(module => module.AdminComponent),
+        canActivate: [AdminGuard]
+      }, {
+        path: 'tutor-stats',
+        loadComponent: () => import('./admin/tutor-stats/tutor-stats.component')
+          .then(module => module.TutorStatsComponent),
+        canActivate: [AdminGuard]
+      },
+      {
+        path: 'reservation-stats',
+        loadComponent: () => import('./admin/reservation-stats/reservation-stats.component')
+          .then(module => module.ReservationStatsComponent),
         canActivate: [AdminGuard]
       }
     ]),

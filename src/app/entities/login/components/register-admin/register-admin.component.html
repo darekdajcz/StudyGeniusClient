@@ -1,8 +1,8 @@
 <div class="h-100 login-background">
-    <!--  <button type="submit" mat-raised-button color="primary" (click)="check()">CHECK</button>-->
     <div class="w-lg-50 h-100 opacity-100">
         <div class="login-container">
-            <mat-toolbar class="login-toolbar" color="primary">{{'register.register-header' | translate}}</mat-toolbar>
+            <mat-toolbar class="login-toolbar"
+                         color="primary">{{'register.register-header-admin' | translate}}</mat-toolbar>
             <mat-card class="p-3">
                 <form class="d-flex flex-column align-items-center" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
@@ -43,13 +43,8 @@
                         </mat-error>
                     </mat-form-field>
 
-                    <mat-button-toggle-group class="w-100" name="fontStyle" aria-label="Font Style"
-                                             formControlName="role">
-                        <mat-button-toggle class="w-25"
-                                           [value]="AuthRole.STUDENT">{{'userRole.STUDENT' | translate}}</mat-button-toggle>
-                        <mat-button-toggle class="w-25"
-                                           [value]="AuthRole.TUTOR">{{'userRole.TUTOR' | translate}}</mat-button-toggle>
-                    </mat-button-toggle-group>
+                    <mat-button-toggle class="w-25" disabled
+                                       [value]="AuthRole.ADMIN">{{'userRole.ADMIN' | translate}}</mat-button-toggle>
 
                     <button class="mt-3" type="submit" mat-raised-button
                             color="primary">{{'register.sign-in' | translate}}

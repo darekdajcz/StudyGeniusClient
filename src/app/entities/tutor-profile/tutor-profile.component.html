@@ -62,7 +62,9 @@
                 </div>
                 <div class="u-actions">
                     <button (click)="selectedIndex = 1" mat-raised-button color="primary">
-                        <fa-icon></fa-icon> Zamów lekcję </button>
+                        <fa-icon></fa-icon>
+                        Zamów lekcję
+                    </button>
                     <a href="tel:+48537370907" class="btn btn-bordered btn-custom"><i class="c-icon c-icon-phone"></i>
                         Zadzwoń</a>
                 </div>
@@ -73,10 +75,10 @@
                 <mat-tab-group [(selectedIndex)]="selectedIndex">
                     <mat-tab label="Opis">
                         <div class="overflow-hidden">
-                            <h2 class="mb-3">Opis i dane kontaktowe</h2>
+                            <h2 class="mt-2 mb-1">Opis i dane kontaktowe</h2>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="p-4 d-flex flex-column">
+                                    <div class="p-2 d-flex flex-column">
                                         <small>Opis:</small>
                                         <span style="font-size: 13px">{{tutor.description}}</span>
                                     </div>
@@ -141,14 +143,54 @@
                                 </mat-form-field>
                                 <button mat-raised-button color="primary"
                                         [disabled]="!lessonHour || !lessonTime"
-                                (click)="addReservation()">
+                                        (click)="addReservation()">
                                     Zarezerwuj
                                 </button>
                             </div>
                         </div>
                     </mat-tab>
-                    <mat-tab label="Kontakt"> Content 3</mat-tab>
-                    <mat-tab label="Przedmioty i lokalizacja"> Content 3</mat-tab>
+                    <mat-tab label="Kontakt">
+                        <div class="overflow-hidden">
+                            <h2 class="mt-2 mb-1">Dane kontaktowe</h2>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="p-2 d-flex flex-column">
+                                        <small>Numer telefonu:</small>
+                                        <span><strong>{{tutor.phoneNumber}}</strong></span>
+
+                                        <small class="mt-2">Email:</small>
+                                        <span><strong>{{tutor.email}}</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Przedmioty i lokalizacja">
+                        <div class="overflow-hidden">
+                            <h2 class="mt-2 mb-1">Przedmioty i lokalizacja</h2>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="p-2 d-flex flex-column">
+                                        <small>Przedmiot:</small>
+                                        <span><strong>{{tutor.subject}}</strong></span>
+
+                                        <small class="mt-2">Miejsce korepetycji:</small>
+                                        <ng-container *ngIf="!tutor.street; else noAddress">
+                                            <span>
+                                                <strong> {{tutor.street}} {{tutor.houseNumber}},</strong>
+                                                <strong> {{tutor.city}}, {{tutor.postalCode}}</strong>
+                                            </span>
+                                        </ng-container>
+                                        <ng-template #noAddress>
+                                              <span>
+                                                <strong>Nauczyciel nie prowadzi lekcji u siebie</strong>
+                                            </span>
+                                        </ng-template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
                     <mat-tab label="Opinie"> Content 3</mat-tab>
                 </mat-tab-group>
 

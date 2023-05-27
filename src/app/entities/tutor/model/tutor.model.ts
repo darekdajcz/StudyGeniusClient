@@ -32,6 +32,10 @@ export interface TutorDetailModel {
   price: number | null;
   daysAvailable: DaysEnum[],
   hoursAvailable: string
+  postalCode: string
+  city: string
+  street: string
+  houseNumber: string
 }
 
 export enum PlaceEnum {

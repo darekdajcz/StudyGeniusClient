@@ -12,6 +12,8 @@ import { TutorDetailModel, TutorModel } from './model/tutor.model';
 import { ReservationListResponse } from './model/reservation-response';
 import { AddReservationRequest } from './model/add-reservation-request';
 import { AddReservationResponse } from './model/add-reservation-response';
+import { TutorStatistic } from './model/tutor-statistic';
+import { ReservationStatistic } from './model/resevation-statistic';
 
 export interface TutorCriteria {
   id?: number | null;
@@ -45,6 +47,14 @@ export class TutorService {
 
   getReservations = (id: number): Observable<ReservationListResponse> => {
     return this.http.get<ReservationListResponse>(`${ this.resourceUrl }/reservation/${ id }`);
+  };
+
+  getTutorStats = (): Observable<TutorStatistic> => {
+    return this.http.get<TutorStatistic>(`${ this.resourceUrl }/tutor-stats`);
+  };
+
+  getReservationStats = (): Observable<ReservationStatistic> => {
+    return this.http.get<ReservationStatistic>(`${ this.resourceUrl }/reservation-stats`);
   };
 
   getStudentReservations = (id: number): Observable<ReservationListResponse> => {

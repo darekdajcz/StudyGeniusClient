@@ -9,23 +9,20 @@ import { TokenStorageService } from '../../../../shared/services/token-storage.s
 import { LoginComponent } from '../../login.component';
 
 @Component({
-  templateUrl: './register.component.html',
+  templateUrl: './register-admin.component.html',
   styleUrls: ['./../../login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RegisterComponent {
+export class RegisterAdminComponent {
   protected readonly AuthRole = AuthRole;
 
-  // TODO --> admin can aproove registration
-  // TODO --> agent can add account see all lists
-  // TODO --> client can see only his accounts and banks
 
   signUpForm = this.fb.group({
     firstname: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
-    role: [AuthRole.STUDENT, [Validators.required]]
+    role: [AuthRole.ADMIN, [Validators.required]]
   });
 
   constructor(private readonly fb: NonNullableFormBuilder, private readonly authService: AuthService,
