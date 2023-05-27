@@ -1,9 +1,5 @@
 <div class="page background">
     <h1 class="tutor-header">{{'tutor.header' | translate}}</h1>
-    <button *ngIf="canEdit()" class="mb-2" mat-raised-button color="primary"
-            (click)="updateTutor()">
-        {{'tutor.add-tutor' | translate}}
-    </button>
     <div class="me-3 mb-4">
         <app-tutor-filter *ngIf="showSearchBox" [tutorSearchForm]="tutorSearchForm"
                           (close)="toggleSearchBox()" (reset)="reset()" (search)="search()"></app-tutor-filter>

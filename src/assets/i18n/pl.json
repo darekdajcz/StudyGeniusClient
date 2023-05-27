@@ -37,8 +37,7 @@
   "section": {
     "home": "Strona Główna",
     "tutor-database": "Ogłoszenia",
-    "client-database": "Klienci",
-    "order-database": "Zamówienia",
+    "admin": "Ogłoszenia",
     "info": "Info",
     "ngrx": "NgRx",
     "login": "Logowanie",
@@ -65,23 +64,6 @@
   "form": {
     "required": "Pole wymagane"
   },
-  "client": {
-    "header": "Baza Klienta",
-    "add-client": "Dodaj Klienta",
-    "to-client": "Klienta",
-    "name": "Imie i Nazwisko",
-    "firstname": "Imie",
-    "surname": "Nazwisko",
-    "age": "Wiek",
-    "driver_license_number": "Prawo jazdy",
-    "address": "Adres",
-    "city": "Miasto",
-    "street": "Ulica",
-    "house_number": "Numer mieszkania",
-    "post_code": "Kod pocztowy",
-    "pesel": "Pesel",
-    "details": "Szczegóły"
-  },
   "tutor": {
     "header": "Baza Naszych Nauczycieli",
     "add-tutor": "Dodaj Ogloszenie",
@@ -104,10 +86,5 @@
     "tenant_id": "Najemca",
     "address": "Adres",
     "details": "Szczegóły"
-  },
-  "order": {
-    "header": "Baza Zamówień",
-    "add-order": "Dodaj Zamówienie",
-    "to-order": "Zamówienie"
   }
 }
