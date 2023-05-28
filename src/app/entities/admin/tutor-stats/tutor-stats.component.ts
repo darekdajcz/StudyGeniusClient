@@ -72,12 +72,13 @@ export class TutorStatsComponent implements OnInit {
     this.user = this.tokenStorageService.getUser();
     this.tutorService.getTutorStats()
       .pipe(finalize(() => {
-        this.barChartLabels = [...this.tutorMap.keys()];
+        this.barChartLabels = [...this.tutorMap.keys()].map(res =>
+          this.translateService.instant(`tutor.subject.${ res }`));
         const dataX = [...this.tutorMap.values()];
         this.barChartData.push({
           data: dataX,
           label: this.translateService.instant('tutor.mark'),
-          backgroundColor: '#455a64'
+          backgroundColor: '#3B60A6D1'
         });
         this.barChart?.update();
         this.toggleOpen();

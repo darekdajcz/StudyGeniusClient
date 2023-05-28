@@ -4,7 +4,7 @@
   padding-right: 5rem;
   padding-left: 5rem;
   padding-top: 5rem;
-  color: var(--dark-primary);
+  color: white;
   @media only screen and (max-width: 992px) {
     font-size: 2rem;
   }
@@ -29,7 +29,8 @@ button {
 .clock-cader {
   width: 371px;
   height: 162px;
-  background-color: rgba(74, 164, 213, 0.2);
+  background: rgb(48, 125, 184);
+  background: linear-gradient(0deg, rgba(59, 96, 166, 0.8196078431) 44%, rgba(255, 255, 255, 1) 100%);
   border-radius: 24px;
   border: 6px solid #b5babf;
   display: flex;
@@ -39,7 +40,7 @@ button {
 }
 
 .hour {
-  color: var(--dark-primary);
+  color: #cee0ee;
   font-size: 40px;
   font-family: 'Orbitron', sans-serif;
   font-weight: bold;
@@ -50,5 +51,20 @@ button {
 
 .date {
   @extend .hour;
+  color: var(--dark-primary);
   font-size: 20px;
+}
+
+.logo-x {
+  min-height: 180px;
+  width: 180px;
+  margin-bottom: -40px;
+  z-index: 10;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('../../../../assets/image/logo.png');
+}
+
+.bc {
+  background-image: url('../../../../assets/image/background-blue-2.png');
 }

@@ -74,7 +74,7 @@ th {
   height: 70px;
   position: relative;
   border-radius: 50%;
-  background: rgba(175, 55, 55, 0.29);
+  background: var(--light-primary);
 }
 
 .status-container {

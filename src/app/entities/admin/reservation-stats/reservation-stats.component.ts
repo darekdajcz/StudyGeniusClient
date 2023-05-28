@@ -71,15 +71,16 @@ export class ReservationStatsComponent implements OnInit {
     this.user = this.tokenStorageService.getUser();
     this.tutorService.getReservationStats()
       .pipe(finalize(() => {
-        this.barChartLabels = [...this.reservationMap.keys()];
+        this.barChartLabels = [...this.reservationMap.keys()].map(res =>
+          this.translateService.instant(`tutor.${ res }`));
         const dataX = [...this.reservationMap.values()];
         this.barChartData.push({
           data: dataX,
-          label: this.translateService.instant('reservation.place'),
+          label: this.translateService.instant('tutor.reservation-place'),
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgba(197,95,114,0.7)',
+            'rgba(59,96,166,0.82)',
+            'rgb(229,189,97)'
           ]
         });
         this.barChart?.update();

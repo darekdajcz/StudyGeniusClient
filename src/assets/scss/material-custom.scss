@@ -76,5 +76,5 @@ $my-theme: mat.define-light-theme((
 }
 
 .mat-mdc-outlined-button:not(:disabled) {
-  color: var(--dark-primary)!important;
+  color: rgba(5, 48, 91, 0.99) !important;
 }

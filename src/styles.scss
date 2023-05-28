@@ -16,7 +16,7 @@ body {
   --light-blue: #a19bf2;
   --background-primary: #FFFFFF;
   --background-primary-2: #2955a8;
-  --primary: rgba(99, 122, 197, 0.45);
+  --primary: rgba(59, 96, 166, 0.8196078431);
   --light-primary: rgba(128, 145, 201, 0.54);
   --dark-primary: #35619FFC;
   --status-success-color: #36B036FF;
@@ -92,12 +92,13 @@ body {
 }
 
 .login-background {
-  //background-image: url('/assets/image/bc3.jpg');
+  background-image: url("/assets/image/bc-3.png");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   border-radius: 15px;
   min-height: calc(100vh - 100px);
+  z-index: 100;
   font-size: 1.25rem;
   color: #37507ED1;
 }
