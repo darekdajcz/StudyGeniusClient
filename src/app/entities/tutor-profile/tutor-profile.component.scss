@@ -91,3 +91,16 @@
 ::ng-deep .mat-calendar-body-cell.weekend {
   opacity: 0.4;
 }
+
+.tutor-responsive {
+  @media only screen and (max-width: 992px) {
+    width: 100% !important;
+  }
+}
+
+.tutor-responsive-direction {
+  display: flex;
+  @media only screen and (max-width: 992px) {
+    flex-direction: column;
+  }
+}

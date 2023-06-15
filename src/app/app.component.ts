@@ -10,8 +10,7 @@ import { AuthRole } from './entities/login/components/models/auth-role';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSidenav) sideNav!: MatSidenav;

@@ -1,11 +1,11 @@
 <div @leftRightAnimation class="search-criteria-panel" [formGroup]="tutorSearchForm">
-  <div class="d-flex justify-content-between me-2">
+  <div class="d-flex flex-sm-column justify-content-between me-2">
     <h3 class="mb-3">{{'filters' | translate}}</h3>
     <button mat-button class="filter-close-button" (click)="closeV()">
       <mat-icon class="close-icon">cancel</mat-icon>
     </button>
   </div>
-  <div class="d-flex">
+  <div class="d-flex filter-responsive">
 
     <div class="d-flex me-2">
       <mat-form-field>

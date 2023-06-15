@@ -16,10 +16,6 @@ import { LoginComponent } from '../../login.component';
 export class RegisterComponent {
   protected readonly AuthRole = AuthRole;
 
-  // TODO --> admin can aproove registration
-  // TODO --> agent can add account see all lists
-  // TODO --> client can see only his accounts and banks
-
   signUpForm = this.fb.group({
     firstname: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
