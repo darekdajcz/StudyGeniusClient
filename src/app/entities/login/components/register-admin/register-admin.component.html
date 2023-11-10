@@ -1,0 +1,57 @@
+<div class="h-100 login-background">
+    <div class="w-lg-50 h-100 opacity-100">
+        <div class="login-container">
+            <mat-toolbar class="login-toolbar"
+                         color="primary">{{'register.register-header-admin' | translate}}</mat-toolbar>
+            <mat-card class="p-3">
+                <form class="d-flex flex-column align-items-center" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+                    <mat-form-field>
+                        <mat-icon matPrefix>person_outline</mat-icon>
+                        <mat-label>{{'register.firstname' | translate}}</mat-label>
+                        <input autofocus type="text" matInput formControlName="firstname">
+                        <mat-error *ngIf="firstnameControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-icon matPrefix>person_outline</mat-icon>
+                        <mat-label>{{'register.lastname' | translate}}</mat-label>
+                        <input autofocus type="text" matInput formControlName="lastname">
+                        <mat-error *ngIf="lastnameControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-icon matPrefix>alternate_email</mat-icon>
+                        <mat-label>{{'register.email' | translate}}</mat-label>
+                        <input autofocus type="text" matInput placeholder="Email" formControlName="email">
+                        <mat-error *ngIf="emailControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-icon matPrefix>lock_outline</mat-icon>
+                        <mat-label>{{'register.password' | translate}}</mat-label>
+                        <input type="password" autocomplete="false" matInput placeholder="Hasło"
+                               formControlName="password">
+                        <mat-error *ngIf="passwordControl.hasError('required')">
+                            {{'form.required' | translate}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-button-toggle class="w-25" disabled
+                                       [value]="AuthRole.ADMIN">{{'user-role.ADMIN' | translate}}
+                    </mat-button-toggle>
+
+                    <button class="mt-3" type="submit" mat-raised-button
+                            color="primary">{{'register.sign-in' | translate}}
+                    </button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

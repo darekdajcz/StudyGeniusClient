@@ -1,0 +1,232 @@
+<div class="page background" *ngIf="tutor">
+    <div class="col-md-12 col-sm-12 d-flex tutor-responsive-direction gap-3">
+        <div class="col-md-4 tutor-responsive">
+            <div id="profile-block" class=" mainFormText profile-white-block">
+                <div class="u-common-info ">
+                    <div class="team-image profile-image-wrap">
+                        <img class="" style="border-radius: 50%;" alt="" src="">
+                        <i class="c-icon c-icon-play"></i>
+                    </div>
+                    <div class="u-initials">
+                        <h3 class="mainFormText" id="namePrH">
+                            <a href="">
+                                {{tutor.firstname}}
+                                <br>
+                                {{tutor.lastname}}
+                            </a>
+                        </h3>
+                        <span class="u-address">
+                            {{'tutor.tutor' | translate}}
+                            {{tutor.subject}}
+                        </span>
+                        <div class="u-status-line">
+                            <fa-icon class="me-2"
+                                     *ngIf="hasBadge(Badges.APPROVED)" icon="check-circle"></fa-icon>
+                            <fa-icon class="me-2"
+                                     *ngIf="hasBadge(Badges.CERTIFICATES)" icon="trophy"></fa-icon>
+                            <fa-icon class="me-2"
+                                     *ngIf="hasBadge(Badges.STAR)" icon="star"></fa-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-learn-data">
+                    <div class="u-learn-places">
+                        <h5>
+                            {{'tutor.learn-place' | translate}}
+                        </h5>
+                        <div class="place-prices">
+                            <div>
+                                <fa-icon class="me-2"
+                                         [icon]="hasPlace(Places.TUTOR_PLACE) ? 'check-circle' :  'cancel'">
+                                </fa-icon>
+                                {{'tutor.tutor-place' | translate}}
+                            </div>
+                            <div>
+                                <fa-icon class="me-2"
+                                         [icon]="hasPlace(Places.STUDENT_PLACE) ? 'check-circle' :  'cancel'">
+                                </fa-icon>
+                                {{'tutor.student-place' | translate}}
+                            </div>
+                            <div>
+                                <fa-icon class="me-2" *ngIf="hasPlace(Places.ONLINE)"
+                                         [icon]="hasPlace(Places.ONLINE) ? 'check-circle' :  'cancel'">
+                                </fa-icon>
+                                {{'tutor.online' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-learn-prices">
+                        <div>
+                            <span>
+                                {{'tutor.from' | translate}}
+                            </span> &nbsp;
+                            <strong>
+                                {{tutor.price | currency : 'zł':'symbol-narrow'}}
+                            </strong>
+                        </div>
+                        <a>
+                            {{'tutor.see-packages' | translate}}
+                        </a>
+                    </div>
+                </div>
+                <div class="u-actions">
+                    <button *ngIf="isStudent()" (click)="selectedIndex = 1" mat-raised-button color="primary">
+                        <fa-icon></fa-icon>
+                        {{'tutor.reserve-lesson' | translate}}
+                    </button>
+                    <a [href]="'tel:+' + tutor.phoneNumber" class="btn btn-bordered btn-custom">
+                        <i class="c-icon c-icon-phone"></i>
+                        {{'tutor.call' | translate}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 tutor-responsive">
+            <div class="profile-block-content profile-section">
+                <mat-tab-group [(selectedIndex)]="selectedIndex">
+                    <mat-tab label="Opis">
+                        <div class="overflow-hidden">
+                            <h2 class="mt-2 mb-1">
+                                {{'tutor.describe-and-contact' | translate}}
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="p-2 d-flex flex-column">
+                                        <small>
+                                            {{'tutor.description' | translate}}:
+                                        </small>
+                                        <span style="font-size: 13px">{{tutor.description}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab *ngIf="isStudent()" [label]="'tutor.harmonogram' | translate" >
+                        <div class="mt-3">
+                            {{'tutor.where' | translate}}:
+                        </div>
+                        <mat-button-toggle-group [(ngModel)]="place" name="fontStyle"
+                                                 aria-label="Font Style">
+                            <mat-button-toggle
+                                [disabled]="!tutor.place.includes(PlaceEnum.STUDENT_PLACE)"
+                                [value]="PlaceEnum.STUDENT_PLACE">
+                                {{'tutor.' + PlaceEnum.STUDENT_PLACE | translate}}
+                            </mat-button-toggle>
+                            <mat-button-toggle
+                                [disabled]="!tutor.place.includes(PlaceEnum.TUTOR_PLACE)"
+                                [value]="PlaceEnum.TUTOR_PLACE">
+                                {{'tutor.' + PlaceEnum.TUTOR_PLACE | translate}}
+                            </mat-button-toggle>
+                            <mat-button-toggle
+                                [disabled]="!tutor.place.includes(PlaceEnum.ONLINE)"
+                                [value]="PlaceEnum.ONLINE">
+                                {{'tutor.' + PlaceEnum.ONLINE | translate}}
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                        <div class="overflow-hidden d-flex tutor-responsive-direction">
+                            <div>
+                                <h2 class="mb-2">
+                                    {{'tutor.harmonogram' | translate}}
+                                </h2>
+                                <mat-card class="demo-inline-calendar-card" *ngIf="initCaledar">
+                                    <mat-calendar [(selected)]="selected"
+                                                  [minDate]="today"
+                                                  [dateFilter]="hideWeekends"></mat-calendar>
+                                </mat-card>
+                            </div>
+                            <div class="ms-4 mt-5 pt-5">
+                                <div>
+                                    {{'tutor.how-much-time' | translate}}
+                                </div>
+                                <mat-button-toggle-group [(ngModel)]="lessonTime" name="fontStyle"
+                                                         aria-label="Font Style">
+                                    <mat-button-toggle [value]="1">30 min</mat-button-toggle>
+                                    <mat-button-toggle [value]="2">60 min</mat-button-toggle>
+                                    <mat-button-toggle [value]="3">90 min</mat-button-toggle>
+                                </mat-button-toggle-group>
+
+                                <div class="mt-3">
+                                    {{'tutor.hours-avaiable' | translate}}
+                                </div>
+                                <mat-form-field>
+                                    <mat-label>
+                                        {{'tutor.chose-hours' | translate}}
+                                    </mat-label>
+                                    <mat-select [(ngModel)]="lessonHour">
+                                        <mat-option *ngFor="let hour of hoursAvailable"
+                                                    [value]="hour"
+                                                    [disabled]="isDisabled(hour)">
+                                            {{hour}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <button mat-raised-button color="primary"
+                                        [disabled]="!lessonHour || !lessonTime"
+                                        (click)="addReservation()">
+                                    {{'tutor.reserve' | translate}}
+                                </button>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab [label]="'tutor.contact' | translate">
+                        <div class="overflow-hidden">
+                            <h2 class="mt-2 mb-1">
+                                {{'tutor.contact-data' | translate}}
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="p-2 d-flex flex-column">
+                                        <small>
+                                            {{'tutor.phoneNumber' | translate}}
+                                        </small>
+                                        <span><strong>{{tutor.phoneNumber}}</strong></span>
+
+                                        <small class="mt-2">
+                                            {{'tutor.email' | translate}}
+                                        </small>
+                                        <span><strong>{{tutor.email}}</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab [label]="'tutor.sub-local' | translate">
+                        <div class="overflow-hidden">
+                            <h2 class="mt-2 mb-1">
+                                {{'tutor.sub-local' | translate}}
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="p-2 d-flex flex-column">
+                                        <small>
+                                            {{'tutor.subject' | translate}}:
+                                        </small>
+                                        <span><strong>{{'tutor.subject.' + tutor.subject | translate}}</strong></span>
+
+                                        <small class="mt-2">
+                                            {{'tutor.lessons-place' | translate}}:
+                                        </small>
+                                        <ng-container *ngIf="!tutor.street; else noAddress">
+                                            <span>
+                                                <strong> {{tutor.street}} {{tutor.houseNumber}},</strong>
+                                                <strong> {{tutor.city}}, {{tutor.postalCode}}</strong>
+                                            </span>
+                                        </ng-container>
+                                        <ng-template #noAddress>
+                                              <span>
+                                                <strong>
+                                                    {{'tutor.no-tutor-place' | translate}}
+                                                 </strong>
+                                            </span>
+                                        </ng-template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Opinie">{{'tutor.no-opinion' | translate}}</mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div>

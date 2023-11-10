@@ -1,6 +1,6 @@
 <mat-toolbar class="d-flex justify-content-between">
   <div>
-    <button mat-icon-button *ngIf="sideNav.mode === 'over'" (click)="sideNav.toggle()">
+    <button mat-icon-button  (click)="sideNav.toggle()">
       <mat-icon *ngIf="!sideNav.opened">
         menu
       </mat-icon>
@@ -19,13 +19,14 @@
         <button *ngIf="!isLoggedIn" mat-menu-item (click)="redirectTo('login')">{{'button.login' | translate}}</button>
         <button *ngIf="!isLoggedIn" mat-menu-item
                 (click)="redirectTo('sign-up')">{{'button.sign-up' | translate}}</button>
+        <button *ngIf="isLoggedIn" mat-menu-item (click)="navigateToProfile()">{{'button.tutor-profile' | translate}}</button>
         <button *ngIf="isLoggedIn" mat-menu-item (click)="logout()">{{'button.logout' | translate}}</button>
       </mat-menu>
     </div>
   </div>
 
 </mat-toolbar>
-<mat-sidenav-container>
+<mat-sidenav-container class="bc">
   <mat-sidenav #sideNav="matSidenav">
     <h4 class="name">{{'author' | translate}}</h4>
 
@@ -36,25 +37,16 @@
         <mat-icon>home</mat-icon>
         <span>{{'section.home' | translate}}</span>
       </button>
-      <button mat-button class="menu-button" (click)="redirectTo('car')">
+      <button mat-button class="menu-button" (click)="redirectTo('tutor')">
         <mat-icon>person</mat-icon>
-        <span>{{'section.car-database' | translate}}</span>
+        <span>{{'section.tutor-database' | translate}}</span>
       </button>
 
-      <button mat-button class="menu-button" (click)="redirectTo('client')">
-        <mat-icon>person</mat-icon>
-        <span>{{'section.client-database' | translate}}</span>
-      </button>
-
-      <button mat-button class="menu-button" (click)="redirectTo('order')">
-        <mat-icon>person</mat-icon>
-        <span>{{'section.order-database' | translate}}</span>
-      </button>
-
-      <button mat-button class="menu-button" (click)="redirectTo('info')">
+      <button  *hasAuthority="AuthRole.ADMIN" mat-button class="menu-button" (click)="redirectTo('admin')">
         <mat-icon>info</mat-icon>
-        <span>{{'section.info' | translate}}</span>
+        <span>{{'section.admin' | translate}}</span>
       </button>
+
       <button mat-button class="menu-button" (click)="redirectTo('login')">
         <mat-icon>login</mat-icon>
         <span>{{'section.login' | translate}}</span>

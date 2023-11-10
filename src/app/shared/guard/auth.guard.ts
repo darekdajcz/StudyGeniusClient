@@ -10,7 +10,7 @@ export class AuthGuard implements CanLoad {
   private readonly router = inject(Router);
 
   canLoad(route: Route): boolean {
-    if (!!this.authService.getUser()?.id) {
+    if (!!this.authService.getUser()?.role) {
       return true;
     }
     this.router.navigate(['/login']);

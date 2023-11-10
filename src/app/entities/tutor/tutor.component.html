@@ -1,0 +1,76 @@
+<div class="page background">
+    <h1 class="tutor-header">
+        {{'tutor.header' | translate}}
+    </h1>
+    <div class="me-3 mb-4">
+        <app-tutor-filter *ngIf="showSearchBox" [tutorSearchForm]="tutorSearchForm"
+                          (close)="toggleSearchBox()" (reset)="reset()" (search)="search()"></app-tutor-filter>
+        <button *ngIf="!showSearchBox" mat-raised-button (click)="toggleSearchBox()">
+            <mat-icon>search</mat-icon>
+            {{'tutor.filters' | translate}}
+        </button>
+    </div>
+    <div class="d-flex flex-column">
+        <div class="table-responsive">
+            <div class="d-flex" sort
+                 [(predicate)]="predicate"
+                 [(ascending)]="ascending"
+                 [callback]="reload.bind(this)">
+                <div class="me-2 mb-3" *ngFor="let sortName of sortArr ">
+                    <div [sortBy]="sortName">
+                        <app-sort-button [predicate]="predicate"
+                                         [ascending]="ascending"
+                                         [sortButtonName]="sortName"></app-sort-button>
+                    </div>
+                </div>
+            </div>
+
+            <ng-container *ngIf="!!tutors.length; else emptyTable">
+                <ng-container *ngFor="let tutor of tutors">
+                    <div class="card mb-4 basic-container">
+                        <div class="card-body d-flex">
+                            <div class="left-column">
+                                <div class="head-info">
+                                    <div class="tutor-image me-3"></div>
+                                    <div class="status-container">{{tutor.firstname}} {{tutor.lastname}}</div>
+                                </div>
+                                <div class="subjects-row">
+                                    {{'tutor.subject.' + tutor.subject | translate}}
+                                </div>
+                                <div class="tutor-desc">{{tutor.description}}</div>
+                            </div>
+                            <div class="right-column">
+                                <div>
+                                    {{'tutor.pricex' | translate}}
+                                    <strong>{{tutor.price}} / 60 min </strong>
+                                </div>
+                                <button mat-raised-button color="primary" (click)="reservationSection(tutor.id)">
+                                    {{'tutor.reserve' | translate}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+    <nav>
+        <ul class="pagination mt-2 d-flex justify-content-end gap-2">
+            <button mat-raised-button [disabled]="page <= 0" (click)="previousPage()"><
+                {{'tutor.previous' | translate}}
+            </button>
+            <button mat-raised-button color="primary">{{page}}</button>
+            <button class="d-lg-inline d-none" mat-raised-button [disabled]="isNextPageDisabled()"
+                    (click)="nextPage()">{{page + 1}}</button>
+            <button class="d-lg-inline d-none" mat-raised-button [disabled]="isNextPageDisabled()"
+                    (click)="nextPage(2)">{{page + 2}}</button>
+            <button mat-raised-button [disabled]="isNextPageDisabled()" (click)="nextPage()">
+                {{'tutor.next' | translate}} >
+            </button>
+        </ul>
+    </nav>
+</div>
+
+<ng-template #emptyTable>
+    <div class="empty-table">{{'no-results' | translate}}</div>
+</ng-template>

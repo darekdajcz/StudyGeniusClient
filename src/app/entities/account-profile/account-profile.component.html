@@ -1,0 +1,54 @@
+<div class="page background">
+    <div class="d-flex tutor-responsive-direction col-md-12 gap-5">
+        <div class="col-md-4 tutor-responsive">
+            <div class="profile-section basic-container mb-5">
+                <div class="u-common-info">
+                    <div class="team-image" id="profile-image-wrap">
+                        <div></div>
+                        <i></i>
+                    </div>
+                    <div class="u-initials">
+                        <h3>{{user.firstname}} {{user.lastname}}</h3>
+                        <span class="u-role-name">{{'user-role.' + user.role | translate}}</span>
+                    </div>
+                    <div class="dropdown-profile">
+                        <mat-icon>info</mat-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-section basic-container tutor-responsive">
+                <ul>
+                    <li routerLink="/account-profile">
+                        <mat-icon class="mt-2">info</mat-icon>
+                        {{"my-profile.header" | translate}}
+                    </li>
+
+                    <li *ngIf="user.role === AuthRole.TUTOR" routerLink="/account-profile/add-announcement">
+                        <mat-icon class="mt-2">info</mat-icon>
+                        {{"my-profile.add-announcement" | translate}}
+                    </li>
+
+                    <li>
+                        <mat-icon>info</mat-icon>
+                        {{"my-profile.messages" | translate}}
+                    </li>
+
+                    <li *ngIf="user.role === AuthRole.STUDENT || user.role === AuthRole.TUTOR"
+                        routerLink="/account-profile/student-lessons">
+                        <mat-icon>info</mat-icon>
+                        {{"my-profile.lessons" | translate}}
+                    </li>
+                    <li *ngIf="user.role === AuthRole.STUDENT" routerLink="/account-profile/my-tutors">
+                        <mat-icon>info</mat-icon>
+                        {{"my-profile.my-tutors" | translate}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="profile-block-content profile-section basic-container">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

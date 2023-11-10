@@ -32,6 +32,7 @@ export class AlertMessagesComponent implements OnInit {
     this.alertSubscription = this.alertMessagesService.onAlert(this.id)
       .pipe(untilDestroyed(this))
       .subscribe(alert => {
+        console.log('x')
         // clear alerts when an empty alert is received
         if (!alert.message) {
           // filter out alerts without 'keepAfterRouteChange' flag

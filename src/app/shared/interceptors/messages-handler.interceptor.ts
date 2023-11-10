@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { ChangeDetectorRef, inject, Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -17,7 +17,7 @@ export class MessagesHandlerInterceptor implements HttpInterceptor {
       tap({
           next: (event) => {
             if (event instanceof HttpResponse && event.body?.success && !event.body?.data?.length) {
-              this.alertMessagesService.info('success');
+              // this.alertMessagesService.info('success');
             }
           }
         }

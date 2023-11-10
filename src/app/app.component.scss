@@ -2,16 +2,20 @@
   text-align: center;
 }
 
+.bc {
+  background: var(--light-gray);
+}
+
 mat-toolbar {
-  background-color: #455a64;
   color: white;
+  background: #3B60A6D1;
 }
 
 mat-sidenav {
   margin: 16px;
   width: 200px;
   border-right: none;
-  background-color: #455a64;
+  background-color: var(--background-primary);
   color: white;
   border-radius: 10px;
   padding: 16px;

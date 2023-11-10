@@ -10,15 +10,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { HomeComponent } from '../home/home.component';
+import { HomeComponent } from './home/home.component';
 import { loginRoute } from './login.route';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgChartsModule } from 'ng2-charts';
+import { RegisterComponent } from './components/register/register.component';
+import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
+    RegisterAdminComponent
   ],
   imports: [
     RouterModule.forChild(loginRoute),

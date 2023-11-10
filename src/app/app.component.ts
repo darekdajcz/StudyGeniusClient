@@ -5,29 +5,27 @@ import { TokenStorageService } from './shared/services/token-storage.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './shared/services/auth.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { AuthRole } from './entities/login/components/models/auth-role';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
   isLoggedIn = false;
   private opened = false;
+  protected readonly AuthRole = AuthRole;
 
   constructor(private readonly router: Router, private readonly cdRef: ChangeDetectorRef,
-              private readonly tokenStorageService: TokenStorageService, private readonly translateService: TranslateService,
-              private readonly authService: AuthService, private readonly observer: BreakpointObserver) {
+    private readonly tokenStorageService: TokenStorageService, private readonly translateService: TranslateService,
+    private readonly authService: AuthService, private readonly observer: BreakpointObserver) {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    const lng = this.tokenStorageService.getLang();
-
-    !!lng ? this.translateService.use(lng) : null;
+    this.isLoggedIn = !!this.tokenStorageService.getUser()?.email;
+    this.translateService.use(this.tokenStorageService.getLang() ? this.tokenStorageService.getLang() : 'pl');
   }
 
   ngAfterViewInit() {
@@ -47,9 +45,12 @@ export class AppComponent implements AfterViewInit {
   }
 
   logout(): void {
-    this.authService.logout()
-      .subscribe();
+    this.authService.logout().subscribe();
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+  navigateToProfile(): void {
+    this.router.navigate(['account-profile']).then(() => this.opened = false);
   }
 }

@@ -1,7 +1,16 @@
 .angular-logo {
   min-height: 40px;
+  width: 46px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../../../assets/image/logo.png");
+}
+
+.logo-text {
+  margin-right: 15px;
+  margin-top: 13px;
   width: 100px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("../../../assets/image/angular_logo.png");
+  background-image: url("../../../assets/image/logo-name.png");
 }

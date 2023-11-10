@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,39 +23,40 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MessagesHandlerInterceptor } from './shared/interceptors/messages-handler.interceptor';
-import { faIconsX } from './shared/font-awesome-icons/fa-icons';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CoreModule } from './shared/modules/core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatSidenavModule,
-        RouterModule,
-        FontAwesomeModule,
-        EntityModule,
-        InfiniteScrollModule,
-        MatButtonModule,
-        MatDividerModule,
-        NgbModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        AppRoutingModule,
-        SharedModule,
-        MatMenuModule,
-        HttpClientModule,
-        NgxSpinnerModule,
-        MatAutocompleteModule,
-        MatSelectModule,
-        MatTooltipModule,
-        TranslateModule.forRoot(translateModuleConfig),
-        MatToolbarModule
-    ],
+  imports: [
+    CoreModule,
+    BrowserModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    RouterModule,
+    EntityModule,
+    InfiniteScrollModule,
+    MatButtonModule,
+    MatDividerModule,
+    NgbModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    AppRoutingModule,
+    SharedModule,
+    MatMenuModule,
+    HttpClientModule,
+    NgxSpinnerModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatTooltipModule,
+    TranslateModule.forRoot(translateModuleConfig),
+    MatToolbarModule
+  ],
   providers: [
     authInterceptorProviders,
     translateServiceProvider,
@@ -63,12 +64,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
       provide: HTTP_INTERCEPTORS,
       useClass: MessagesHandlerInterceptor,
       multi: true
+    }, {
+      provide: LOCALE_ID,
+      useValue: 'pl'
+    },
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'Zł'
     },
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(iconLibrary: FaIconLibrary) {
-    iconLibrary.addIcons(...faIconsX)
-  }
 }

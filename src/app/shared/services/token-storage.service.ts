@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../entities/login/models/user';
+import { User } from '../../entities/login/components/models/user';
+import {UserModel} from "./auth.service";
 
 const ACCESS_KEY = 'accessToken';
 const USER_KEY = 'auth-user';
@@ -31,12 +32,12 @@ export class TokenStorageService {
     return sessionStorage.getItem(ACCESS_KEY)!;
   }
 
-  saveUser(user: User): void {
+  saveUser(user: UserModel): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  getUser(): User {
+  getUser(): UserModel {
     return JSON.parse(sessionStorage.getItem(USER_KEY)!);
   }
 }

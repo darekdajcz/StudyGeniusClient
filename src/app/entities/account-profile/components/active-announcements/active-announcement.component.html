@@ -1,0 +1,39 @@
+<h2>
+    {{'my-profile.announcement' | translate}}
+</h2>
+<div class="row">
+    <div *ngIf="tutor" class="col-sm-6">
+        <div class="widget-info">
+            <small>
+                {{'my-profile.active-announcement' | translate}}
+            </small>
+            <div>2020-11-05</div>
+            <mat-icon class="icon-copy">file_copy</mat-icon>
+            <div>
+                {{'my-profile.subject' | translate}}
+                {{'tutor.subject.' + tutor.subject | translate}}
+            </div>
+            <div>
+                {{'my-profile.price' | translate}}
+                {{tutor.price}}</div>
+            <small>
+                {{'my-profile.edit-announcement' | translate}}:
+            </small>
+            <button mat-raised-button color="primary" (click)="addAnnouncement()">
+                {{'my-profile.edit-announcement' | translate}}
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="!tutor" class="col-sm-9">
+        <div class="widget-info">
+            <small>
+                {{'my-profile.add-announcement' | translate}}:
+            </small>
+            <button mat-raised-button color="primary" (click)="addAnnouncement()">
+                {{'my-profile.add-announcement' | translate}}
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

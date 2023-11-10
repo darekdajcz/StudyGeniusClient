@@ -1,0 +1,14 @@
+<div class="page background d-flex flex-column gap-4 bc">
+    <button mat-raised-button color="primary" (click)="toggleOpen()">
+        Toggle
+    </button>
+    <div id="lineChart" *ngIf="barLoaded">
+        <canvas baseChart
+                [options]="barChartOptions"
+                [datasets]="this.barChartData"
+                [labels]="barChartLabels"
+                [legend]="barChartLegend"
+                [type]="barChartType">
+        </canvas>
+    </div>
+</div>

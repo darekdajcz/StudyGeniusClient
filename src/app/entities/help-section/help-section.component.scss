@@ -1,0 +1,17 @@
+h2, h3 {
+  color: var(--primary);
+}
+
+h4 {
+  color: var(--light-primary);
+}
+
+.logo-x {
+  min-height: 180px;
+  width: 180px;
+  margin-bottom: -40px;
+  z-index: 10;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('../../../assets/image/logo.png');
+}

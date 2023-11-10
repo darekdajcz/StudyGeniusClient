@@ -1,0 +1,32 @@
+<div class="h-100 login-background bc">
+    <div class="home-title h-100 opacity-100 d-flex flex-column">
+        <div>{{'home.hello' | translate}}
+            <span *ngIf="user"
+                  style="color: #263238"> {{'home.hello-role.' + user.role | translate}} {{user.firstname}} {{user.lastname}}</span>
+        </div>
+        <a *ngIf="!user" routerLink="/login">{{'home.login' | translate}}</a>
+    </div>
+
+    <div *ngIf="user" class="d-flex justify-content-center p-2">
+        <button mat-flat-button color="primary" (click)="toggleOpen()">
+            {{'chart_toggle' | translate}}
+        </button>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="logo-x">
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="clock-cader">
+            <ng-container *ngIf="loaded">
+                <div class="date text-center">
+                    {{ actualDateTime | date: 'dd-MM-yyyy' }}  </div>
+                <div class="hour">
+                    {{ hours | number:'2.0' }} : {{ minutes  | number:'2.0' }} : {{ seconds | number:'2.0' }}
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
